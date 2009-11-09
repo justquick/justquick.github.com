@@ -50,7 +50,7 @@
 Tags are &#8220;native&#8221; because there is a much closer relationship between the tag in the template and a Python function behind the scenes.
 The app abstracts the work needed to parse out the templatetag syntax into a useable form for a Python function.
 For example:</p>
-<p>Define a comparison function in your templatetags:</p>
+<p>Define an arbitrary function in your templatetags:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="n">add</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="bp">True</span>
