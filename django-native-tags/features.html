@@ -60,7 +60,7 @@ strings act just like they should and the arguments parsed from the above exampl
 <div class="section" id="keyword-arguments">
 <h2>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h2>
 <p>Arguments and keyword arguments are parsed out of the template to more closely match the Python API. That way
-<tt class="docutils literal"><span class="pre">{%</span> <span class="pre">myfunc</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">kwarg1=value1</span> <span class="pre">kwarg2=value2</span> <span class="pre">%}</span></tt> represents the function with signature <tt class="docutils literal"><span class="pre">def</span> <span class="pre">myfunc(arg1,</span> <span class="pre">arg2,</span> <span class="pre">kwarg1=None,</span> <span class="pre">kwarg2=None)</span></tt>.
+<tt class="docutils literal"><span class="pre">{%</span> <span class="pre">myfunc</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">kwarg1=value1</span> <span class="pre">kwarg2=value2</span> <span class="pre">%}</span></tt> represents the function with signature <tt class="docutils literal"><span class="pre">def</span> <span class="pre">myfunc(arg1,</span> <span class="pre">arg2,</span> <span class="pre">kwarg1=value1,</span> <span class="pre">kwarg2=value2)</span></tt>.
 This also means that <tt class="docutils literal"><span class="pre">*args</span></tt> and <tt class="docutils literal"><span class="pre">**kwargs</span></tt> can also be used in native tag functions.</p>
 </div>
 <div class="section" id="auto-resolve">

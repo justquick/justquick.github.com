@@ -55,7 +55,9 @@
 <dl class="function">
 <dt id="native_tags.nodes.do_function">
 <tt class="descclassname">native_tags.nodes.</tt><tt class="descname">do_function</tt><big>(</big><em>parser</em>, <em>token</em><big>)</big><a class="headerlink" href="#native_tags.nodes.do_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a defined function an either outputs results, or stores results in template variable</p>
+<dd><p>Performs a defined function on the passed arguments.
+Normally this returns the output of the function into the template.
+If the second to last argument is <tt class="docutils literal"><span class="pre">as</span></tt>, the result of the function is stored in the context and is named whatever the last argument is.</p>
 <p>Syntax:</p>
 <div class="highlight-django"><div class="highlight"><pre><span class="x">{% [function] [var args...] [name=value kwargs...] [as varname] %}</span>
 </pre></div>
@@ -74,12 +76,16 @@
 <dl class="function">
 <dt id="native_tags.nodes.do_comparison">
 <tt class="descclassname">native_tags.nodes.</tt><tt class="descname">do_comparison</tt><big>(</big><em>parser</em>, <em>token</em><big>)</big><a class="headerlink" href="#native_tags.nodes.do_comparison" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compares two values.</p>
+<dd><p>Compares passed arguments. 
+Attached functions should return boolean <tt class="xref docutils literal"><span class="pre">True</span></tt> or <tt class="xref docutils literal"><span class="pre">False</span></tt>.
+If the attached function returns <tt class="xref docutils literal"><span class="pre">True</span></tt>, the first node list is rendered.
+If the attached function returns <tt class="xref docutils literal"><span class="pre">False</span></tt>, the second optional node list is rendered (part after the <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">else</span> <span class="pre">%}</span></tt> statement). 
+If the last argument in the tag is <tt class="docutils literal"><span class="pre">negate</span></tt>, then the opposite node list is rendered (like an <tt class="docutils literal"><span class="pre">ifnot</span></tt> tag).</p>
 <p>Syntax:</p>
-<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if_</span><span class="o">[</span><span class="nv">comparison</span><span class="o">]</span> <span class="o">[</span><span class="nv">var1</span><span class="o">]</span> <span class="o">[</span><span class="nv">var2</span><span class="o">]</span> <span class="o">[</span><span class="nv">var</span><span class="p">...</span><span class="o">]</span> <span class="o">[</span><span class="nv">negate</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">...</span>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if_</span><span class="o">[</span><span class="nv">comparison</span><span class="o">]</span> <span class="o">[</span><span class="nv">var</span> <span class="nv">args</span><span class="p">...</span><span class="o">]</span> <span class="o">[</span><span class="nv">name</span><span class="o">=</span><span class="nv">value</span> <span class="nv">kwargs</span><span class="p">...</span><span class="o">]</span> <span class="o">[</span><span class="nv">negate</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# first node list in here #}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">...</span>
+<span class="x">    </span><span class="c">{# second optional node list in here #}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">endif_</span><span class="o">[</span><span class="nv">comparison</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
@@ -88,11 +94,11 @@
 Checkout the <a class="reference external" href="contrib/index.html#contrib-index"><em>Contrib Add Ons</em></a> for more examples</p>
 <p>Examples:</p>
 <div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if_less</span> <span class="nv">some_object.id</span> <span class="m">3</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">some_object</span> <span class="cp">}}</span><span class="x"> has an id less than 3.&lt;/p&gt;</span>
+<span class="cp">{{</span> <span class="nv">some_object</span> <span class="cp">}}</span><span class="x"> has an id less than 3.</span>
 <span class="cp">{%</span> <span class="k">endif_less</span> <span class="cp">%}</span><span class="x"></span>
 
 <span class="cp">{%</span> <span class="k">if_match</span> <span class="nv">request.path</span> <span class="s1">&#39;^/$&#39;</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">&lt;p&gt;Welcome home&lt;/p&gt;</span>
+<span class="x">Welcome home</span>
 <span class="cp">{%</span> <span class="k">endif_match</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
@@ -105,7 +111,8 @@ Checkout the <a class="reference external" href="contrib/index.html#contrib-inde
 <dt id="native_tags.nodes.do_block">
 <tt class="descclassname">native_tags.nodes.</tt><tt class="descname">do_block</tt><big>(</big><em>parser</em>, <em>token</em><big>)</big><a class="headerlink" href="#native_tags.nodes.do_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process several nodes inside a single block
-Takes context, nodelist and template arguments</p>
+Block functions take <tt class="docutils literal"><span class="pre">context</span></tt>, <tt class="docutils literal"><span class="pre">nodelist</span></tt> as first arguments
+If the second to last argument is <tt class="docutils literal"><span class="pre">as</span></tt>, the rendered result is stored in the context and is named whatever the last argument is.</p>
 <p>Syntax:</p>
 <div class="highlight-django"><div class="highlight"><pre><span class="x">{% [block] [var args...] [name=value kwargs...] [as varname] %}</span>
 <span class="x">    ... nodelist ...</span>
@@ -117,7 +124,7 @@ Takes context, nodelist and template arguments</p>
 <span class="x">    </span><span class="cp">{{</span> <span class="nv">request.path</span> <span class="cp">}}</span><span class="x">/blog/</span><span class="cp">{{</span> <span class="nv">blog.slug</span> <span class="cp">}}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">endrender_block</span> <span class="cp">%}</span><span class="x"></span>
 
-<span class="cp">{%</span> <span class="k">highlight_block</span> <span class="nv">python</span> <span class="k">as</span> <span class="nv">source</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">highlight_block</span> <span class="nv">python</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    import this</span>
 <span class="cp">{%</span> <span class="k">endhighlight_block</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
@@ -127,6 +134,12 @@ Takes context, nodelist and template arguments</p>
 </div>
 <div class="section" id="filter-tags">
 <span id="id4"></span><h2>Filter tags<a class="headerlink" href="#filter-tags" title="Permalink to this headline">¶</a></h2>
+<p>Native Filter tags are pretty much the same as regular Django filter tags.
+There is no special sauce here because the arguments that you can pass filter tags is very limited and is currently being expanded <a class="reference external" href="http://code.djangoproject.com/ticket/1199">in this issue</a>.
+Filters take the piped value as the first argument and as of now <em>only one</em> extra argument like so:</p>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">value</span><span class="o">|</span><span class="nf">filter</span><span class="o">:</span><span class="nv">arg</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
 </div>
 </div>
 

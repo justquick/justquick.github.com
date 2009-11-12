@@ -86,11 +86,11 @@ items in the feed).</li>
 <a class="reference external" href="http://feedparser.org/">http://feedparser.org/</a>. See <a class="reference external" href="http://feedparser.org/docs/">its documentation</a> for details of the
 parsed feed object.</p>
 <p>Syntax:</p>
-<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">include_feed</span> <span class="o">[</span><span class="nv">feed_url</span><span class="o">]</span> <span class="o">[</span><span class="nv">num_items</span><span class="o">]</span> <span class="o">[</span><span class="nv">template_name</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">include_feed</span> <span class="o">[</span><span class="nv">feed_url</span><span class="o">]</span> <span class="o">[</span><span class="nv">template_name</span><span class="o">]</span> <span class="o">[</span><span class="nv">num_items</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">include_feed</span> <span class="s2">&quot;http://www2.ljworld.com/rss/headlines/&quot;</span> <span class="m">10</span> <span class="nv">feed_includes</span><span class="o">/</span><span class="nv">ljworld_headlines.html</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">include_feed</span> <span class="s2">&quot;http://www2.ljworld.com/rss/headlines/&quot;</span> <span class="nv">feed_includes</span><span class="o">/</span><span class="nv">ljworld_headlines.html</span> <span class="m">10</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 </blockquote>

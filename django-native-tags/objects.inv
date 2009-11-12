@@ -9,6 +9,7 @@ native_tags.contrib.generic_content mod contrib/generic_content.html
 native_tags.contrib.mapreduce mod contrib/mapreduce.html
 native_tags.contrib.pygmentize mod contrib/pygmentize.html
 native_tags.nodes mod concepts.html
+native_tags.contrib.generic_markup mod contrib/generic_markup.html
 native_tags.contrib.comparison mod contrib/comparison.html
 native_tags.contrib.serializers mod contrib/serializers.html
 native_tags.contrib.context mod contrib/context.html
@@ -55,9 +56,11 @@ native_tags.contrib.generic_content.get_latest_objects function contrib/generic_
 native_tags.contrib.mapreduce.do_reduce function contrib/mapreduce.html
 native_tags.contrib.comparison.less_or_equal function contrib/comparison.html
 native_tags.contrib.rand.randint function contrib/rand.html
+native_tags.contrib.generic_markup.apply_markup function contrib/generic_markup.html
 native_tags.contrib.rand.random function contrib/rand.html
 native_tags.decorators.block function decorators.html
 native_tags.contrib.mapreduce.do_map function contrib/mapreduce.html
+native_tags.contrib.generic_markup.smartypants function contrib/generic_markup.html
 native_tags.contrib.regex.substitute function contrib/regex.html
 native_tags.contrib.feeds.include_feed function contrib/feeds.html
 native_tags.contrib.comparison.greater_or_equal function contrib/comparison.html

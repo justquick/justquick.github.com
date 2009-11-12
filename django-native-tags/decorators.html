@@ -77,7 +77,8 @@ A function can have multiple uses (eg. function and filter)</p>
 Set to <tt class="xref docutils literal"><span class="pre">False</span></tt> to parse your own raw text arguments. Default is <tt class="xref docutils literal"><span class="pre">True</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">takes_context</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt> the context itself is prepended to the function arguments. Default is <tt class="xref docutils literal"><span class="pre">False</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">inclusion</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt> then the function is treated as an inclusion tag. Inclusion tags work a bit differently in
-native tags, the function must return a tuple of (<tt class="docutils literal"><span class="pre">template_name</span></tt>, <tt class="docutils literal"><span class="pre">context</span></tt>)</p>
+native tags, the function must return a tuple of (<tt class="docutils literal"><span class="pre">template_name</span></tt>, <tt class="docutils literal"><span class="pre">context</span></tt>). This lets you dynamically define the name of
+the template to use in rendering.</p>
 </blockquote>
 </div>
 <div class="section" id="decorator-types">

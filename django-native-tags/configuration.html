@@ -50,6 +50,20 @@
             
   <div class="section" id="settings">
 <span id="configuration"></span><h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="django-builtin-tags">
+<h2>DJANGO_BUILTIN_TAGS<a class="headerlink" href="#django-builtin-tags" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<p>Tuple of Django templatetags/filters methods to load by default.
+Place your most commonly used templatetags here and you will not have to <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">%}</span></tt> them.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DJANGO_BUILTIN_TAGS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.contrib.markup.templatetags.markup&#39;</span><span class="p">,</span>
+    <span class="c">#...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</blockquote>
+</div>
 <div class="section" id="native-load">
 <h2>NATIVE_LOAD<a class="headerlink" href="#native-load" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -61,40 +75,44 @@ otherwise needs <tt class="docutils literal"><span class="pre">{%</span> <span c
 <blockquote>
 <p>Updates the library of tags to load by default
 These can be created in <tt class="docutils literal"><span class="pre">settings.py</span></tt> and many other python files.</p>
-<blockquote>
 <p>Example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">NATIVE_LIBRARY</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="s">&#39;functions&#39;</span><span class="p">:{</span>
-      <span class="s">&#39;add&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span>
-      <span class="c">#...</span>
-   <span class="p">}</span>
-   <span class="c">#...</span>
-<span class="p">}</span>
+     <span class="s">&#39;functions&#39;</span><span class="p">:{</span>
+         <span class="s">&#39;add&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span>
+         <span class="c">#...</span>
+     <span class="p">},</span>
+     <span class="c">#...</span>
+ <span class="p">}</span>
 </pre></div>
 </div>
-</blockquote>
 </blockquote>
 </div>
 <div class="section" id="native-contrib">
 <h2>NATIVE_CONTRIB<a class="headerlink" href="#native-contrib" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-Tuple of contrib tag modules to load.
-Use the ones from <a class="reference external" href="contrib/index.html#contrib-index"><em>Contrib Add Ons</em></a> or add your own</blockquote>
-</div>
-<div class="section" id="django-builtin-tags">
-<h2>DJANGO_BUILTIN_TAGS<a class="headerlink" href="#django-builtin-tags" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<p>Tuple of Django templatetags/filters methods to load by default.
-Place your most commonly used templatetags here and you will not have to <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">%}</span></tt> them.</p>
-<blockquote>
-<p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">DJANGO_BUILTIN_TAGS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&#39;django.contrib.markup.templatetags.markup&#39;</span><span class="p">,</span>
-    <span class="c">#...</span>
+<p>Tuple of contrib tag modules to load.
+Use the ones from <a class="reference external" href="contrib/index.html#contrib-index"><em>Contrib Add Ons</em></a> or add your own</p>
+<p>Out of the box, this is set to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">NATIVE_CONTRIB</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;native_tags.contrib.comparison&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.context&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.generic_content&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.generic_markup&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.hash&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.serializers&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.baseencode&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.regex&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.mapreduce&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.cal&#39;</span><span class="p">,</span>
+    <span class="s">&#39;native_tags.contrib.rand&#39;</span><span class="p">,</span>
+
+    <span class="c"># Tags that have dependencies</span>
+    <span class="c">#&#39;native_tags.contrib.gchart&#39;, # GChartWrapper</span>
+    <span class="c">#&#39;native_tags.contrib.pygmentize&#39;, # Pygments</span>
+    <span class="c">#&#39;native_tags.contrib.feeds&#39;, # Feedparser</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-</blockquote>
 </blockquote>
 </div>
 </div>
@@ -108,10 +126,10 @@ Place your most commonly used templatetags here and you will not have to <tt cla
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
 <li><a class="reference external" href="">Settings</a><ul>
+<li><a class="reference external" href="#django-builtin-tags">DJANGO_BUILTIN_TAGS</a></li>
 <li><a class="reference external" href="#native-load">NATIVE_LOAD</a></li>
 <li><a class="reference external" href="#native-library">NATIVE_LIBRARY</a></li>
 <li><a class="reference external" href="#native-contrib">NATIVE_CONTRIB</a></li>
-<li><a class="reference external" href="#django-builtin-tags">DJANGO_BUILTIN_TAGS</a></li>
 </ul>
 </li>
 </ul>

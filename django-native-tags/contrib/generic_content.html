@@ -21,7 +21,7 @@
     <script type="text/javascript" src="../sphinx_static/doctools.js"></script>
     <link rel="top" title="Django Native Tags v0.1 documentation" href="../index.html" />
     <link rel="up" title="Contrib Add Ons" href="index.html" />
-    <link rel="next" title="rand - random number operations" href="rand.html" />
+    <link rel="next" title="generic_markup - filters for converting plain text to HTML" href="generic_markup.html" />
     <link rel="prev" title="mapreduce - native map and reduce tags" href="mapreduce.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
           <a href="../modindex.html" title="Global Module Index"
              accesskey="M">modules</a> |</li>
         <li class="right" >
-          <a href="rand.html" title="rand - random number operations"
+          <a href="generic_markup.html" title="generic_markup - filters for converting plain text to HTML"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="mapreduce.html" title="mapreduce - native map and reduce tags"
@@ -134,11 +134,11 @@ The optional field argument specifies which field to get_latest_by, otherwise th
 <p>Retrieves a specific object from a given model by primary-key
 lookup, and stores it in a context variable.</p>
 <p>Syntax:</p>
-<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">retrieve_object</span> <span class="o">[</span><span class="nv">app_name</span><span class="o">]</span><span class="p">.</span><span class="o">[</span><span class="nv">model_name</span><span class="o">]</span> <span class="o">[</span><span class="nv">pk</span><span class="o">]</span> <span class="k">as</span> <span class="o">[</span><span class="nv">varname</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">retrieve_object</span> <span class="o">[</span><span class="nv">app_name</span><span class="o">]</span><span class="p">.</span><span class="o">[</span><span class="nv">model_name</span><span class="o">]</span> <span class="o">[</span><span class="nv">lookup</span> <span class="nv">kwargs</span><span class="o">]</span> <span class="k">as</span> <span class="o">[</span><span class="nv">varname</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">retrieve_object</span> <span class="nv">flatpages.flatpage</span> <span class="m">12</span> <span class="k">as</span> <span class="nv">my_flat_page</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">retrieve_object</span> <span class="nv">flatpages.flatpage</span> <span class="nv">pk</span><span class="o">=</span><span class="m">12</span> <span class="k">as</span> <span class="nv">my_flat_page</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 </blockquote>
@@ -157,8 +157,8 @@ lookup, and stores it in a context variable.</p>
             <p class="topless"><a href="mapreduce.html"
                                   title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">mapreduce</span></tt> - native <tt class="docutils literal docutils literal"><span class="pre">map</span></tt> and <tt class="docutils literal docutils literal"><span class="pre">reduce</span></tt> tags</a></p>
             <h4>Next topic</h4>
-            <p class="topless"><a href="rand.html"
-                                  title="next chapter"><tt class="docutils literal"><span class="pre">rand</span></tt> - random number operations</a></p>
+            <p class="topless"><a href="generic_markup.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">generic_markup</span></tt> - filters for converting plain text to HTML</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="../sphinx_sources/contrib/generic_content.txt"
@@ -191,7 +191,7 @@ lookup, and stores it in a context variable.</p>
           <a href="../modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="rand.html" title="rand - random number operations"
+          <a href="generic_markup.html" title="generic_markup - filters for converting plain text to HTML"
              >next</a> |</li>
         <li class="right" >
           <a href="mapreduce.html" title="mapreduce - native map and reduce tags"
