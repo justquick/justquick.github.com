@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Settings &mdash; Django Native Tags v0.1 documentation</title>
+    <title>Settings &mdash; Django Native Tags v0.2 documentation</title>
     <link rel="stylesheet" href="sphinx_static/default.css" type="text/css" />
     <link rel="stylesheet" href="sphinx_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1',
+        VERSION:     '0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,9 +19,9 @@
     </script>
     <script type="text/javascript" src="sphinx_static/jquery.js"></script>
     <script type="text/javascript" src="sphinx_static/doctools.js"></script>
-    <link rel="top" title="Django Native Tags v0.1 documentation" href="index.html" />
+    <link rel="top" title="Django Native Tags v0.2 documentation" href="index.html" />
     <link rel="next" title="Decorators" href="decorators.html" />
-    <link rel="prev" title="Features" href="features.html" /> 
+    <link rel="prev" title="Features of Native Tags" href="features.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,9 +37,9 @@
           <a href="decorators.html" title="Decorators"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="features.html" title="Features"
+          <a href="features.html" title="Features of Native Tags"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -49,14 +49,16 @@
           <div class="body">
             
   <div class="section" id="settings">
-<span id="configuration"></span><h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="django-builtin-tags">
 <h2>DJANGO_BUILTIN_TAGS<a class="headerlink" href="#django-builtin-tags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<p>Tuple of Django templatetags/filters methods to load by default.
-Place your most commonly used templatetags here and you will not have to <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">%}</span></tt> them.</p>
+<p>Tuple of Django templatetags modules to load by default.
+This places them in the Django template Library builtins.
+Place your most commonly used templatetags here and you will never have to <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">%}</span></tt> them.</p>
 <p>Example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">DJANGO_BUILTIN_TAGS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;native_tags.templatetags.native&#39;</span><span class="p">,</span>
     <span class="s">&#39;django.contrib.markup.templatetags.markup&#39;</span><span class="p">,</span>
     <span class="c">#...</span>
 <span class="p">)</span>
@@ -64,53 +66,48 @@ Place your most commonly used templatetags here and you will not have to <tt cla
 </div>
 </blockquote>
 </div>
-<div class="section" id="native-load">
-<h2>NATIVE_LOAD<a class="headerlink" href="#native-load" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-Boolean whether to load the native tags automatically
-otherwise needs <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">native</span> <span class="pre">}%</span></tt>. Default is <tt class="xref docutils literal"><span class="pre">True</span></tt></blockquote>
-</div>
 <div class="section" id="native-library">
 <h2>NATIVE_LIBRARY<a class="headerlink" href="#native-library" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<p>Updates the library of tags to load by default
-These can be created in <tt class="docutils literal"><span class="pre">settings.py</span></tt> and many other python files.</p>
+<p>Updates the library of tags to load by default.
+Define any valid types of functions here.
+Lets you define them right in <tt class="docutils literal"><span class="pre">settings.py</span></tt></p>
 <p>Example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">NATIVE_LIBRARY</span> <span class="o">=</span> <span class="p">{</span>
-     <span class="s">&#39;functions&#39;</span><span class="p">:{</span>
-         <span class="s">&#39;add&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span>
-         <span class="c">#...</span>
-     <span class="p">},</span>
-     <span class="c">#...</span>
+     <span class="s">&#39;function&#39;</span><span class="p">:{</span> <span class="s">&#39;add&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="p">},</span>
+     <span class="s">&#39;comparison&#39;</span><span class="p">:{</span> <span class="s">&#39;is_in&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y</span> <span class="p">},</span>
+     <span class="s">&#39;filter&#39;</span><span class="p">:{</span> <span class="s">&#39;rstrip&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="p">},</span>
+     <span class="s">&#39;block&#39;</span><span class="p">:{</span> <span class="s">&#39;comment&#39;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="s">&#39;&#39;</span> <span class="p">}</span>
  <span class="p">}</span>
 </pre></div>
 </div>
 </blockquote>
 </div>
-<div class="section" id="native-contrib">
-<h2>NATIVE_CONTRIB<a class="headerlink" href="#native-contrib" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="native-tags">
+<h2>NATIVE_TAGS<a class="headerlink" href="#native-tags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <p>Tuple of contrib tag modules to load.
 Use the ones from <a class="reference external" href="contrib/index.html#contrib-index"><em>Contrib Add Ons</em></a> or add your own</p>
-<p>Out of the box, this is set to:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">NATIVE_CONTRIB</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&#39;native_tags.contrib.comparison&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.context&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.generic_content&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.generic_markup&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.hash&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.serializers&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.baseencode&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.regex&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.mapreduce&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.cal&#39;</span><span class="p">,</span>
-    <span class="s">&#39;native_tags.contrib.rand&#39;</span><span class="p">,</span>
+<p>Out of the box, this is just the set of tags needed to be a functional replacement to django-template-utils</p>
+<p>All available options included in this app:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&#39;native_tags.contrib.comparison&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.context&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.generic_content&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.generic_markup&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.hash&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.serializers&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.baseencode&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.regex&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.math&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.mapreduce&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.cal&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.rand&#39;</span><span class="p">,</span>
+<span class="s">&#39;native_tags.contrib.smart_if&#39;</span><span class="p">,</span>
 
-    <span class="c"># Tags that have dependencies</span>
-    <span class="c">#&#39;native_tags.contrib.gchart&#39;, # GChartWrapper</span>
-    <span class="c">#&#39;native_tags.contrib.pygmentize&#39;, # Pygments</span>
-    <span class="c">#&#39;native_tags.contrib.feeds&#39;, # Feedparser</span>
-<span class="p">)</span>
+<span class="c"># Native tags with dependencies</span>
+<span class="s">&#39;native_tags.contrib.gchart&#39;</span><span class="p">,</span> <span class="c"># GChartWrapper</span>
+<span class="s">&#39;native_tags.contrib.pygmentize&#39;</span><span class="p">,</span> <span class="c"># Pygments</span>
+<span class="s">&#39;native_tags.contrib.feeds&#39;</span><span class="p">,</span> <span class="c"># Feedparser</span>
 </pre></div>
 </div>
 </blockquote>
@@ -127,16 +124,15 @@ Use the ones from <a class="reference external" href="contrib/index.html#contrib
             <ul>
 <li><a class="reference external" href="">Settings</a><ul>
 <li><a class="reference external" href="#django-builtin-tags">DJANGO_BUILTIN_TAGS</a></li>
-<li><a class="reference external" href="#native-load">NATIVE_LOAD</a></li>
 <li><a class="reference external" href="#native-library">NATIVE_LIBRARY</a></li>
-<li><a class="reference external" href="#native-contrib">NATIVE_CONTRIB</a></li>
+<li><a class="reference external" href="#native-tags">NATIVE_TAGS</a></li>
 </ul>
 </li>
 </ul>
 
             <h4>Previous topic</h4>
             <p class="topless"><a href="features.html"
-                                  title="previous chapter">Features</a></p>
+                                  title="previous chapter">Features of Native Tags</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="decorators.html"
                                   title="next chapter">Decorators</a></p>
@@ -175,13 +171,13 @@ Use the ones from <a class="reference external" href="contrib/index.html#contrib
           <a href="decorators.html" title="Decorators"
              >next</a> |</li>
         <li class="right" >
-          <a href="features.html" title="Features"
+          <a href="features.html" title="Features of Native Tags"
              >previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Justin Quick.
+      &copy; Copyright 2009, Justin Quick &lt;justquick@gmail.com&gt;.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>

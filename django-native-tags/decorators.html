@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Decorators &mdash; Django Native Tags v0.1 documentation</title>
+    <title>Decorators &mdash; Django Native Tags v0.2 documentation</title>
     <link rel="stylesheet" href="sphinx_static/default.css" type="text/css" />
     <link rel="stylesheet" href="sphinx_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1',
+        VERSION:     '0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="sphinx_static/jquery.js"></script>
     <script type="text/javascript" src="sphinx_static/doctools.js"></script>
-    <link rel="top" title="Django Native Tags v0.1 documentation" href="index.html" />
+    <link rel="top" title="Django Native Tags v0.2 documentation" href="index.html" />
     <link rel="next" title="Contrib Add Ons" href="contrib/index.html" />
     <link rel="prev" title="Settings" href="configuration.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="configuration.html" title="Settings"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -79,6 +79,8 @@ Set to <tt class="xref docutils literal"><span class="pre">False</span></tt> to 
 <p><tt class="docutils literal"><span class="pre">inclusion</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt> then the function is treated as an inclusion tag. Inclusion tags work a bit differently in
 native tags, the function must return a tuple of (<tt class="docutils literal"><span class="pre">template_name</span></tt>, <tt class="docutils literal"><span class="pre">context</span></tt>). This lets you dynamically define the name of
 the template to use in rendering.</p>
+<p><tt class="docutils literal"><span class="pre">apply_filters</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt>, the filter expressions are resolved for each argument and keyword argument if present.
+Default is <tt class="xref docutils literal"><span class="pre">True</span></tt></p>
 </blockquote>
 </div>
 <div class="section" id="decorator-types">
@@ -190,11 +192,11 @@ def my_filter(value, arg):
         <li class="right" >
           <a href="configuration.html" title="Settings"
              >previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Justin Quick.
+      &copy; Copyright 2009, Justin Quick &lt;justquick@gmail.com&gt;.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>

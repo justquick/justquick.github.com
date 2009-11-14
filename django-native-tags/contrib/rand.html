@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>rand - random number operations &mdash; Django Native Tags v0.1 documentation</title>
+    <title>rand - random number operations &mdash; Django Native Tags v0.2 documentation</title>
     <link rel="stylesheet" href="../sphinx_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../sphinx_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="../sphinx_static/jquery.js"></script>
     <script type="text/javascript" src="../sphinx_static/doctools.js"></script>
-    <link rel="top" title="Django Native Tags v0.1 documentation" href="../index.html" />
+    <link rel="top" title="Django Native Tags v0.2 documentation" href="../index.html" />
     <link rel="up" title="Contrib Add Ons" href="index.html" />
     <link rel="next" title="regex - regular expression pattern operations" href="regex.html" />
     <link rel="prev" title="generic_markup - filters for converting plain text to HTML" href="generic_markup.html" /> 
@@ -40,7 +40,7 @@
         <li class="right" >
           <a href="generic_markup.html" title="generic_markup - filters for converting plain text to HTML"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Django Native Tags v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Django Native Tags v0.2 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Contrib Add Ons</a> &raquo;</li> 
       </ul>
     </div>  
@@ -52,6 +52,17 @@
             
   <div class="section" id="module-native_tags.contrib.rand">
 <h1><tt class="xref docutils literal"><span class="pre">rand</span></tt> - random number operations<a class="headerlink" href="#module-native_tags.contrib.rand" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="native_tags.contrib.rand.randchoice">
+<tt class="descclassname">native_tags.contrib.rand.</tt><tt class="descname">randchoice</tt><big>(</big><em>*seq</em><big>)</big><a class="headerlink" href="#native_tags.contrib.rand.randchoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose a random element from a non-empty sequence.</p>
+<p>Syntax:</p>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">randchoice</span> <span class="o">[</span><span class="nv">sequence</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">randchoice</span> <span class="o">[</span><span class="nv">choice1</span> <span class="nv">choice2</span> <span class="p">...</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="function">
 <dt id="native_tags.contrib.rand.randint">
 <tt class="descclassname">native_tags.contrib.rand.</tt><tt class="descname">randint</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="headerlink" href="#native_tags.contrib.rand.randint" title="Permalink to this definition">¶</a></dt>
@@ -73,12 +84,16 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="native_tags.contrib.rand.randchoice">
-<tt class="descclassname">native_tags.contrib.rand.</tt><tt class="descname">randchoice</tt><big>(</big><em>*seq</em><big>)</big><a class="headerlink" href="#native_tags.contrib.rand.randchoice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Choose a random element from a non-empty sequence.</p>
+<dt id="native_tags.contrib.rand.randrange">
+<tt class="descclassname">native_tags.contrib.rand.</tt><tt class="descname">randrange</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#native_tags.contrib.rand.randrange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose a random item from range(start, stop[, step]).</p>
+<blockquote>
+This fixes the problem with randint() which includes the
+endpoint; in Python this is usually not what you want.
+Do not supply the &#8216;int&#8217;, &#8216;default&#8217;, and &#8216;maxwidth&#8217; arguments.</blockquote>
 <p>Syntax:</p>
-<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">randchoice</span> <span class="o">[</span><span class="nv">sequence</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">randchoice</span> <span class="o">[</span><span class="nv">choice1</span> <span class="nv">choice2</span> <span class="p">...</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">randrange</span> <span class="o">[</span><span class="nv">stop</span><span class="o">]</span> <span class="o">[</span><span class="nv">options</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">randrange</span> <span class="o">[</span><span class="nv">start</span><span class="o">]</span> <span class="o">[</span><span class="nv">stop</span><span class="o">]</span> <span class="o">[</span><span class="nv">step</span><span class="o">]</span> <span class="o">[</span><span class="nv">options</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 </dd></dl>
@@ -134,12 +149,12 @@
         <li class="right" >
           <a href="generic_markup.html" title="generic_markup - filters for converting plain text to HTML"
              >previous</a> |</li>
-        <li><a href="../index.html">Django Native Tags v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Django Native Tags v0.2 documentation</a> &raquo;</li>
           <li><a href="index.html" >Contrib Add Ons</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Justin Quick.
+      &copy; Copyright 2009, Justin Quick &lt;justquick@gmail.com&gt;.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>
