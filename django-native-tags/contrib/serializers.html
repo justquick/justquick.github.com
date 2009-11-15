@@ -21,7 +21,7 @@
     <script type="text/javascript" src="../sphinx_static/doctools.js"></script>
     <link rel="top" title="Django Native Tags v0.2 documentation" href="../index.html" />
     <link rel="up" title="Contrib Add Ons" href="index.html" />
-    <link rel="next" title="pygmentize - using Pygments to highlight source code" href="pygmentize.html" />
+    <link rel="next" title="smart_if - Smarter if tag" href="smart_if.html" />
     <link rel="prev" title="regex - regular expression pattern operations" href="regex.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
           <a href="../modindex.html" title="Global Module Index"
              accesskey="M">modules</a> |</li>
         <li class="right" >
-          <a href="pygmentize.html" title="pygmentize - using Pygments to highlight source code"
+          <a href="smart_if.html" title="smart_if - Smarter if tag"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="regex.html" title="regex - regular expression pattern operations"
@@ -52,7 +52,32 @@
             
   <div class="section" id="module-native_tags.contrib.serializers">
 <h1><tt class="xref docutils literal"><span class="pre">serializers</span></tt> - wrapper for <tt class="xref docutils literal"><span class="pre">django.core.serializers</span></tt><a class="headerlink" href="#module-native_tags.contrib.serializers" title="Permalink to this headline">¶</a></h1>
-<p>Serialize Django <tt class="xref docutils literal"><span class="pre">QuerySets</span></tt> directly into templates</p>
+<dl class="function">
+<dt id="native_tags.contrib.serializers.serialize">
+<tt class="descclassname">native_tags.contrib.serializers.</tt><tt class="descname">serialize</tt><big>(</big><em>format</em>, <em>queryset</em>, <em>**options</em><big>)</big><a class="headerlink" href="#native_tags.contrib.serializers.serialize" title="Permalink to this definition">¶</a></dt>
+<dd>Serialize a queryset (or any iterator that returns database objects) using
+a certain serializer.</dd></dl>
+
+<dl class="function">
+<dt id="native_tags.contrib.serializers.serialize_json">
+<tt class="descclassname">native_tags.contrib.serializers.</tt><tt class="descname">serialize_json</tt><big>(</big><em>queryset</em><big>)</big><a class="headerlink" href="#native_tags.contrib.serializers.serialize_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="native_tags.contrib.serializers.serialize_xml">
+<tt class="descclassname">native_tags.contrib.serializers.</tt><tt class="descname">serialize_xml</tt><big>(</big><em>queryset</em><big>)</big><a class="headerlink" href="#native_tags.contrib.serializers.serialize_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="native_tags.contrib.serializers.serialize_python">
+<tt class="descclassname">native_tags.contrib.serializers.</tt><tt class="descname">serialize_python</tt><big>(</big><em>queryset</em><big>)</big><a class="headerlink" href="#native_tags.contrib.serializers.serialize_python" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="native_tags.contrib.serializers.serialize_yaml">
+<tt class="descclassname">native_tags.contrib.serializers.</tt><tt class="descname">serialize_yaml</tt><big>(</big><em>queryset</em><big>)</big><a class="headerlink" href="#native_tags.contrib.serializers.serialize_yaml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
@@ -65,8 +90,8 @@
             <p class="topless"><a href="regex.html"
                                   title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">regex</span></tt> - regular expression pattern operations</a></p>
             <h4>Next topic</h4>
-            <p class="topless"><a href="pygmentize.html"
-                                  title="next chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">pygmentize</span></tt> - using <tt class="docutils literal docutils literal docutils literal"><span class="pre">Pygments</span></tt> to highlight source code</a></p>
+            <p class="topless"><a href="smart_if.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">smart_if</span></tt> - Smarter if tag</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="../sphinx_sources/contrib/serializers.txt"
@@ -99,7 +124,7 @@
           <a href="../modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="pygmentize.html" title="pygmentize - using Pygments to highlight source code"
+          <a href="smart_if.html" title="smart_if - Smarter if tag"
              >next</a> |</li>
         <li class="right" >
           <a href="regex.html" title="regex - regular expression pattern operations"

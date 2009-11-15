@@ -14,6 +14,7 @@ native_tags.contrib.comparison mod contrib/comparison.html
 native_tags.contrib.math_ mod contrib/math.html
 native_tags.contrib.serializers mod contrib/serializers.html
 native_tags.contrib.context mod contrib/context.html
+native_tags.contrib.smart_if mod contrib/smart_if.html
 native_tags.contrib.rand mod contrib/rand.html
 native_tags.contrib.gchart mod contrib/gchart.html
 native_tags.contrib.baseencode mod contrib/baseencode.html
@@ -46,6 +47,7 @@ native_tags.contrib.generic_content.retrieve_object function contrib/generic_con
 native_tags.contrib.hash.sha256 function contrib/hash.html
 native_tags.contrib.baseencode.b64encode function contrib/baseencode.html
 native_tags.contrib.math_.ldexp function contrib/math.html
+native_tags.contrib.serializers.serialize function contrib/serializers.html
 native_tags.contrib.gchart.gchart function contrib/gchart.html
 native_tags.contrib.math_.cosh function contrib/math.html
 native_tags.contrib.math_.atan function contrib/math.html
@@ -73,6 +75,7 @@ native_tags.contrib.hash.md5 function contrib/hash.html
 native_tags.contrib.math_.floor function contrib/math.html
 native_tags.contrib.comparison.subset function contrib/comparison.html
 native_tags.contrib.comparison.setting function contrib/comparison.html
+native_tags.contrib.serializers.serialize_python function contrib/serializers.html
 native_tags.contrib.math_.pow function contrib/math.html
 native_tags.contrib.pygmentize.highlight_style function contrib/pygmentize.html
 native_tags.contrib.pygmentize.highlight_block function contrib/pygmentize.html
@@ -95,6 +98,7 @@ native_tags.contrib.math_.ceil function contrib/math.html
 native_tags.contrib.comparison.contains function contrib/comparison.html
 native_tags.contrib.cal.calendar function contrib/cal.html
 native_tags.contrib.math_.tan function contrib/math.html
+native_tags.contrib.smart_if.smart_if function contrib/smart_if.html
 native_tags.contrib.math_.atanh function contrib/math.html
 native_tags.nodes.do_function function concepts.html
 native_tags.contrib.comparison.greater function contrib/comparison.html
@@ -107,7 +111,10 @@ native_tags.contrib.math_.atan2 function contrib/math.html
 native_tags.contrib.math_.trunc function contrib/math.html
 native_tags.contrib.generic_content.get_random_objects function contrib/generic_content.html
 native_tags.contrib.math_.tanh function contrib/math.html
+native_tags.contrib.serializers.serialize_json function contrib/serializers.html
 native_tags.contrib.math_.isnan function contrib/math.html
+native_tags.contrib.serializers.serialize_xml function contrib/serializers.html
 native_tags.contrib.math_.log function contrib/math.html
+native_tags.contrib.serializers.serialize_yaml function contrib/serializers.html
 native_tags.nodes.do_comparison function concepts.html
 native_tags.contrib.math_.asinh function contrib/math.html
