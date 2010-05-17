@@ -1,6 +1,6 @@
 # Sphinx inventory version 1
 # Project: Django Native Tags
-# Version: 0.2
+# Version: 0.3
 native_tags.contrib.hash mod contrib/hash.html
 native_tags.contrib mod contrib/index.html
 native_tags.contrib.cal mod contrib/cal.html
@@ -14,7 +14,6 @@ native_tags.contrib.comparison mod contrib/comparison.html
 native_tags.contrib.math_ mod contrib/math.html
 native_tags.contrib.serializers mod contrib/serializers.html
 native_tags.contrib.context mod contrib/context.html
-native_tags.contrib.smart_if mod contrib/smart_if.html
 native_tags.contrib.rand mod contrib/rand.html
 native_tags.contrib.gchart mod contrib/gchart.html
 native_tags.contrib.baseencode mod contrib/baseencode.html
@@ -29,6 +28,7 @@ native_tags.contrib.context.render_block function contrib/context.html
 native_tags.contrib.math_.sinh function contrib/math.html
 native_tags.contrib.math_.log10 function contrib/math.html
 native_tags.contrib.context.document function contrib/context.html
+native_tags.contrib.context.template_block function contrib/context.html
 native_tags.contrib.comparison.startswith function contrib/comparison.html
 native_tags.contrib.comparison.superset function contrib/comparison.html
 native_tags.contrib.context.do_set function contrib/context.html
@@ -36,6 +36,7 @@ native_tags.contrib.hash.sha1 function contrib/hash.html
 native_tags.contrib.math_.sqrt function contrib/math.html
 native_tags.contrib.generic_markup.smartypants function contrib/generic_markup.html
 native_tags.contrib.rand.randint function contrib/rand.html
+native_tags.contrib.context.template_string function contrib/context.html
 native_tags.contrib.generic_content.get_latest_object function contrib/generic_content.html
 native_tags.contrib.math_.log1p function contrib/math.html
 native_tags.contrib.math_.isinf function contrib/math.html
@@ -70,6 +71,7 @@ native_tags.decorators.function function decorators.html
 native_tags.decorators.comparison function decorators.html
 native_tags.contrib.pygmentize.highlight function contrib/pygmentize.html
 native_tags.decorators.filter function decorators.html
+native_tags.contrib.context.native_debug function contrib/context.html
 native_tags.contrib.regex.matches function contrib/regex.html
 native_tags.contrib.hash.md5 function contrib/hash.html
 native_tags.contrib.math_.floor function contrib/math.html
@@ -98,7 +100,6 @@ native_tags.contrib.math_.ceil function contrib/math.html
 native_tags.contrib.comparison.contains function contrib/comparison.html
 native_tags.contrib.cal.calendar function contrib/cal.html
 native_tags.contrib.math_.tan function contrib/math.html
-native_tags.contrib.smart_if.smart_if function contrib/smart_if.html
 native_tags.contrib.math_.atanh function contrib/math.html
 native_tags.nodes.do_function function concepts.html
 native_tags.contrib.comparison.greater function contrib/comparison.html

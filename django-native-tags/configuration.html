@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Settings &mdash; Django Native Tags v0.2 documentation</title>
+    <title>Settings &mdash; Django Native Tags v0.3 documentation</title>
     <link rel="stylesheet" href="sphinx_static/default.css" type="text/css" />
     <link rel="stylesheet" href="sphinx_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2',
+        VERSION:     '0.3',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="sphinx_static/jquery.js"></script>
     <script type="text/javascript" src="sphinx_static/doctools.js"></script>
-    <link rel="top" title="Django Native Tags v0.2 documentation" href="index.html" />
+    <link rel="top" title="Django Native Tags v0.3 documentation" href="index.html" />
     <link rel="next" title="Decorators" href="decorators.html" />
     <link rel="prev" title="Features of Native Tags" href="features.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="features.html" title="Features of Native Tags"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -112,6 +112,17 @@ Use the ones from <a class="reference external" href="contrib/index.html#contrib
 </div>
 </blockquote>
 </div>
+<div class="section" id="native-default-cache-timeout">
+<h2>NATIVE_DEFAULT_CACHE_TIMEOUT<a class="headerlink" href="#native-default-cache-timeout" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<p>Cache timeout (if any) in seconds. If this is set, all tags will cache for this amount of time, otherwise
+you may define caching at the per-tag level. Defaults to <cite>None</cite></p>
+<p>Example 1hr cache:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">NATIVE_DEFAULT_CACHE_TIMEOUT</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</blockquote>
+</div>
 </div>
 
 
@@ -126,6 +137,7 @@ Use the ones from <a class="reference external" href="contrib/index.html#contrib
 <li><a class="reference external" href="#django-builtin-tags">DJANGO_BUILTIN_TAGS</a></li>
 <li><a class="reference external" href="#native-library">NATIVE_LIBRARY</a></li>
 <li><a class="reference external" href="#native-tags">NATIVE_TAGS</a></li>
+<li><a class="reference external" href="#native-default-cache-timeout">NATIVE_DEFAULT_CACHE_TIMEOUT</a></li>
 </ul>
 </li>
 </ul>
@@ -173,11 +185,11 @@ Use the ones from <a class="reference external" href="contrib/index.html#contrib
         <li class="right" >
           <a href="features.html" title="Features of Native Tags"
              >previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Justin Quick &lt;justquick@gmail.com&gt;.
+      &copy; Copyright 2010, Justin Quick &lt;justquick@gmail.com&gt;.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>
