@@ -22,3 +22,14 @@ Here is an example of unittesting a native tag which demonstrates how trivial it
     class AdderTest(TestCase):
         def test_adder(self):
             self.assertEqual(adder(1, 1), 2)
+            
+That is the full example above, but to add simple tests to a native function, you can use the
+``test`` attribute passing in the arguments and expected result of the function call.
+Here is a shorter example that does the same thing as above::
+
+    def adder(x, y):
+        return x + y
+    adder = function(adder, test={'args': (1, 1), 'result': 2})
+    
+Running ``./manage.py test native_tags`` will test the native_tag core as well as
+any of your own test tags as defined like the above example.
