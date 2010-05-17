@@ -20,7 +20,7 @@
     <script type="text/javascript" src="sphinx_static/jquery.js"></script>
     <script type="text/javascript" src="sphinx_static/doctools.js"></script>
     <link rel="top" title="Django Native Tags v0.3 documentation" href="index.html" />
-    <link rel="next" title="Contrib Add Ons" href="contrib/index.html" />
+    <link rel="next" title="Testing Your Tags" href="testing.html" />
     <link rel="prev" title="Settings" href="configuration.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
           <a href="modindex.html" title="Global Module Index"
              accesskey="M">modules</a> |</li>
         <li class="right" >
-          <a href="contrib/index.html" title="Contrib Add Ons"
+          <a href="testing.html" title="Testing Your Tags"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Settings"
@@ -88,6 +88,9 @@ the template to use in rendering.</p>
 Default is <tt class="xref docutils literal"><span class="pre">True</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">cache</span></tt> - integer. The cache timeout time in seconds to use if any.
 Default is no caching.</p>
+<p><tt class="docutils literal"><span class="pre">unit</span></tt> - dictionary. Configuration data for a unittest.
+Keys are: <tt class="docutils literal"><span class="pre">args</span></tt>,``kwargs``, and <tt class="docutils literal"><span class="pre">result</span></tt>. When testing native_tags it will
+assert that the tag called with args/kwargs will return the expected result.</p>
 </blockquote>
 </div>
 <div class="section" id="decorator-types">
@@ -160,8 +163,8 @@ def my_filter(value, arg):
             <p class="topless"><a href="configuration.html"
                                   title="previous chapter">Settings</a></p>
             <h4>Next topic</h4>
-            <p class="topless"><a href="contrib/index.html"
-                                  title="next chapter">Contrib Add Ons</a></p>
+            <p class="topless"><a href="testing.html"
+                                  title="next chapter">Testing Your Tags</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="sphinx_sources/decorators.txt"
@@ -194,7 +197,7 @@ def my_filter(value, arg):
           <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="contrib/index.html" title="Contrib Add Ons"
+          <a href="testing.html" title="Testing Your Tags"
              >next</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Settings"
