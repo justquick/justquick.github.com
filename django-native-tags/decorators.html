@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Decorators &mdash; Django Native Tags v0.4.1 documentation</title>
+    <title>Decorators &mdash; Django Native Tags v0.5 documentation</title>
     <link rel="stylesheet" href="sphinx_static/default.css" type="text/css" />
     <link rel="stylesheet" href="sphinx_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.4.1',
+        VERSION:     '0.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="sphinx_static/jquery.js"></script>
     <script type="text/javascript" src="sphinx_static/doctools.js"></script>
-    <link rel="top" title="Django Native Tags v0.4.1 documentation" href="index.html" />
+    <link rel="top" title="Django Native Tags v0.5 documentation" href="index.html" />
     <link rel="next" title="Testing Your Tags" href="testing.html" />
     <link rel="prev" title="Settings" href="configuration.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="configuration.html" title="Settings"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.4.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -81,6 +81,8 @@ A function can have multiple uses (eg. function and filter)</p>
 <p><tt class="docutils literal"><span class="pre">resolve</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt>, all argments are resolved in the context of the tag.
 Set to <tt class="xref docutils literal"><span class="pre">False</span></tt> to parse your own raw text arguments. Default is <tt class="xref docutils literal"><span class="pre">True</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">takes_context</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt> the context itself is prepended to the function arguments. Default is <tt class="xref docutils literal"><span class="pre">False</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">takes_request</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt> the request object is prepended to the function arguments.
+Make sure <tt class="docutils literal"><span class="pre">django.core.context_processors.request</span></tt> is in your <tt class="docutils literal"><span class="pre">TEMPLATE_CONTEXT_PROCESSORS</span></tt> setting. Default is <tt class="xref docutils literal"><span class="pre">False</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">inclusion</span></tt> - boolean. If <tt class="xref docutils literal"><span class="pre">True</span></tt> then the function is treated as an inclusion tag. Inclusion tags work a bit differently in
 native tags, the function must return a tuple of (<tt class="docutils literal"><span class="pre">template_name</span></tt>, <tt class="docutils literal"><span class="pre">context</span></tt>). This lets you dynamically define the name of
 the template to use in rendering.</p>
@@ -92,6 +94,8 @@ Default is no caching.</p>
 Keys are: <tt class="docutils literal"><span class="pre">args</span></tt>,``kwargs``, and <tt class="docutils literal"><span class="pre">result</span></tt>. When testing native_tags it will
 assert that the tag called with args/kwargs will return the expected result.
 Default expected result is <tt class="xref docutils literal"><span class="pre">True</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">fallback</span></tt> - arbitrary object. If for any reason the native tag you are running encounters an error,
+return this fallback value instead. Providing a default (like an empty list) is a good way to fail elegantly and not have your site crash.</p>
 </blockquote>
 </div>
 <div class="section" id="decorator-types">
@@ -203,7 +207,7 @@ def my_filter(value, arg):
         <li class="right" >
           <a href="configuration.html" title="Settings"
              >previous</a> |</li>
-        <li><a href="index.html">Django Native Tags v0.4.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Native Tags v0.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

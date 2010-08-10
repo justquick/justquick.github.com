@@ -43,6 +43,9 @@ Important Attributes
     Set to ``False`` to parse your own raw text arguments. Default is ``True``
     
     ``takes_context`` - boolean. If ``True`` the context itself is prepended to the function arguments. Default is ``False``
+
+    ``takes_request`` - boolean. If ``True`` the request object is prepended to the function arguments.
+    Make sure ``django.core.context_processors.request`` is in your ``TEMPLATE_CONTEXT_PROCESSORS`` setting. Default is ``False``
     
     ``inclusion`` - boolean. If ``True`` then the function is treated as an inclusion tag. Inclusion tags work a bit differently in
     native tags, the function must return a tuple of (``template_name``, ``context``). This lets you dynamically define the name of
@@ -58,6 +61,9 @@ Important Attributes
     Keys are: ``args``,``kwargs``, and ``result``. When testing native_tags it will
     assert that the tag called with args/kwargs will return the expected result.
     Default expected result is ``True``.
+    
+    ``fallback`` - arbitrary object. If for any reason the native tag you are running encounters an error,
+    return this fallback value instead. Providing a default (like an empty list) is a good way to fail elegantly and not have your site crash.
     
 
 Decorator Types
