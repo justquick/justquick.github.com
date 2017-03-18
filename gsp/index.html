@@ -1,11 +1,15 @@
 <html>
-<body style="font-family: monospace; background-color: black; color: white;">
+<head>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Inconsolata" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body style="font-family: Inconsolata; background-color: black; color: white;">
   <table style="margin: auto; width: 50%;">
     <tr>
       <td>
-        <span style="float: right; font-size: 4em;">
+        <h1 style="float: right; font-size: 4em; font-weight: normal; margin: 0;">
           GSP.studio
-        </span>
+        </h1>
       </td>
       <td>
 
@@ -13,24 +17,23 @@
     </tr>
     <tr>
       <td>
-        <img src="logo.png" />
+        <img id="logo" src="logo.png" width="1000" usemap="gspmap"/>
+        <map name="gspmap">
+          <area shape="rect" coords="333,0,667,290" alt="Performance" href="#" onmouseover="$('#logo').attr('src', 'performance.png')" onmouseout="$('#logo').attr('src', 'logo.png')"/>
+          <area shape="rect" coords="667,0,1000,290" alt="Immersive" href="#" onmouseover="$('#logo').attr('src', 'immersive.png')" onmouseout="$('#logo').attr('src', 'logo.png')"/>
+          <area shape="rect" coords="667,290,1000,580" alt="Info" href="#" onmouseover="$('#logo').attr('src', 'info.png')" onmouseout="$('#logo').attr('src', 'logo.png')"/>
+          <area shape="rect" coords="333,290,667,580" alt="Installation" href="#" onmouseover="$('#logo').attr('src', 'installation.png')" onmouseout="$('#logo').attr('src', 'logo.png')"/>
+        </map>
       </td>
-      <td style="vertical-align: top;">
-        <p style="font-size: 2em; margin-left: 15px;">
-          Performance</br>
-          Installation</br>
-          Immersive</br>
-          Info</br>
-        </p>
 
-      </td>
     </tr>
     <tr>
       <td>
-        <p style="font-size: 1.5em;">| Experimental Art &amp; Design
+        <p style="font-size: 1.5em;">| Experiential Art &amp; Design
           <span style="float: right;">
-            <a href="#"><img alt="Vimeo" src="vimeo.png" /></a>
-            <a href="#"><img alt="Facebook" src="fb.png" /></a>
+            <a href="https://vimeo.com/gspstudi0"><img alt="Vimeo" src="vimeo.png" /></a>
+            <a href="https://www.facebook.com/GSP.studi0/"><img alt="Facebook" src="fb.png" /></a>
+            <a href="https://www.instagram.com/gsp.studio/"><img alt="Instagram" src="insta.png" /></a>
           </span>
 
         </p>
