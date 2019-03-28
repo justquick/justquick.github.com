@@ -1,6 +1,7 @@
 /* W3.CSS 4.12 November 2018 by Jan Egil and Borge Refsnes */
 html {
-    box-sizing: border-box
+    box-sizing: border-box;
+    height: 100%;
 }
 
 *,
@@ -16,7 +17,8 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
+    height: 100%;
 }
 
 article,
@@ -1980,4 +1982,49 @@ h6 {
 
 .info-item {
     margin: 10px
+}
+
+
+/* Add a black background color to the top navigation */
+.topnav {
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 30px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold
+}
+
+.topnav a.logo{
+    padding: 10px 20px 10px 0;
+}
+
+/* Change the color of links on hover */
+.topnav a.link:hover {
+  background-color: blue;
+  color: blue;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.bg{
+      /* The image used */
+  background-image: url("/content/leafheart.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
