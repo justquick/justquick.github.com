@@ -2,9 +2,15 @@
 <html>
 
 <head>
-    <title>W3.CSS Template</title>
+    <title>Justin Quick Developer Site</title>
     <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="/content/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/content/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/content/favicon-16x16.png">
+    <link rel="manifest" href="/content/site.webmanifest">
+    <link rel="mask-icon" href="/content/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="/content/cv.css">
     <link rel="stylesheet" href="/content/github-card.css">
 
@@ -31,6 +37,7 @@
             document.getElementById(name).style.display = "block";
             evt.currentTarget.className += " active";
         }
+        // window.onload = function(){openTab(event, 'home')}
     </script>
 </head>
 
@@ -42,8 +49,18 @@
         <a class="link" href="#contact">Contact</a>
     </header> -->
 
+    <div class="tab">
+        <a onclick="openTab(event, 'home')"><img src="/content/JQLogoOrangeRectangleTightWide.png" style="position: relative;float: left; height: 60px;" /></a>
+        <button class="tablinks" onclick="openTab(event, 'home')">Home </button>
+        <button class="tablinks" onclick="openTab(event, 'projects')">Projects </button>
+        <button class="tablinks" onclick="openTab(event, 'skills')">Skills </button>
+        <button class="tablinks" onclick="openTab(event, 'work')">Work Experience </button>
+        <button class="tablinks" onclick="openTab(event, 'education')">Education </button>
+        <button class="tablinks" onclick="openTab(event, 'contact')">Contact </button>
+    </div>
+
     <!-- Page Container -->
-    <div class="content margin-top" style="max-width:1400px;">
+    <div class="content margin-top" style="max-width:1400px; margin-bottom: 50px;">
 
         <!-- The Grid -->
         <div class="row-padding">
@@ -76,23 +93,19 @@
             <div class="twothird">
 
 
-                <div class="container card white">
-                    <h1 class="padding-16" style="font-weight: bold;">
-                        <img src="/content/JQIOLogo.png" style="position: relative;float: right;" />
-                        <i class="fa fa-hand-peace-o fa-fw margin-right text-orange" style="font-size: 50px"></i>Hello and Welcome</h1>
-                    <h2>My name is Jusin and I develop software</h2>
-                    <p class="large">I am making the world better by contributing to open source technologies for organizations and communities specializing in web applications. Ive contributed to projects that span the world and help people have
-                        a
-                        better relationship with technology on the web. </p>
-                </div>
+
 
                 <div class="container  white margin-bottom">
 
-                    <div class="content card white tab margin-bottom">
-                        <button class="tablinks xlarge" onclick="openTab(event, 'projects')">Projects</button>
-                        <button class="tablinks xlarge" onclick="openTab(event, 'skills')">Skills</button>
-                        <button class="tablinks xlarge" onclick="openTab(event, 'work')">Work Experience</button>
-                        <button class="tablinks xlarge" onclick="openTab(event, 'education')">Education</button>
+
+                    <div id="home" class="tabcontent margin-bottom" style="display: block;">
+                        <h1 class="padding-16" style="font-weight: bold;">
+
+                            <i class="fa fa-hand-peace-o fa-fw margin-right text-orange" style="font-size: 50px"></i>Hello and Welcome</h1>
+                        <h2>My name is Jusin and I develop software</h2>
+                        <p class="large">I am making the world better by contributing to open source technologies for organizations and communities specializing in web applications. Ive contributed to projects that span the world and help people have
+                            a
+                            better relationship with technology on the web. </p>
                     </div>
 
 
@@ -118,7 +131,8 @@
                             <h4 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>2005 - Dec Present</h4>
                             <h5>Oversee the technical decisions for the production websites of Gnarhwhal
                                 Studios and the Humans vs Zombies game. Lead project architect for game
-                                engine design and future products. We produce games such as <a href="http://humansvszombies.org">Humans Vs Zombies</a> and <a href="http://slap45.com">Slap 45</a>. Company site is <a href="http://gnarwhalstudios.com/">http://gnarwhalstudios.com/</a></h5>
+                                engine design and future products. We produce games such as <a href="http://humansvszombies.org">Humans Vs Zombies</a> and <a href="http://slap45.com">Slap 45</a>. Company site is <a
+                                    href="http://gnarwhalstudios.com/">http://gnarwhalstudios.com/</a></h5>
                             <hr>
                         </div>
 
@@ -136,6 +150,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
                         </div>
                     </div>
+
 
                     <div id="skills" class="tabcontent margin-bottom">
                         <h2 class="text-grey padding-16"><i class="fa fa-check-square-o fa-fw margin-right xxlarge text-orange"></i>Skills</h2>
@@ -181,7 +196,15 @@
                             <hr>
                         </div>
                     </div>
-
+                    <div id="contact" class="tabcontent margin-bottom">
+                        <h2 class="text-grey padding-16"><i class="fa fa-envelope fa-fw margin-right xxlarge text-orange"></i>Contact Me</h2>
+                        <form method="POST" action="https://formspree.io/justquick@gmail.com">
+                            <h3>Your Email Address<br><input type="email" name="email" placeholder="email"></h3>
+                            <hr>
+                            <h3>Your Message<br><textarea rows="4" cols="50" name="message" placeholder="message"></textarea></h3>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
                     <!-- End Right Column -->
                 </div>
 

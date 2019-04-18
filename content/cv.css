@@ -1572,7 +1572,7 @@ a {
 .orange,
 .hover-orange:hover {
     color: #000 !important;
-    background-color: #ff9800 !important
+    background-color: #f8592e !important
 }
 
 .deep-orange,
@@ -1747,7 +1747,7 @@ a {
 
 .text-orange,
 .hover-text-orange:hover {
-    color: #ff9800 !important
+    color: #f8592e !important
 }
 
 .text-deep-orange,
@@ -1885,7 +1885,7 @@ a {
 
 .border-orange,
 .hover-border-orange:hover {
-    border-color: #ff9800 !important
+    border-color: #f8592e !important
 }
 
 .border-deep-orange,
@@ -2043,7 +2043,8 @@ h6 {
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
+  border-top: 5px solid #f8592e;
+  border-bottom: 5px solid #f8592e;
   background-color: #f1f1f1;
 }
 
@@ -2053,20 +2054,26 @@ h6 {
   float: left;
   border: none;
   outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
+  padding-left: 14px;
   transition: 0.3s;
-  text-size: 30px
+  height: 60px;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: #ffbead;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  /* background-color: #ccc; */
+  background-color: #f8592e;
+  color: #fff;
+}
+
+.tablinks {
+    font-size: 30px;
+    text-shadow: 2px 2px #ccc;
 }
 
 /* Style the tab content */
