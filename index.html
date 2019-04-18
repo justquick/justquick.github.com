@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/cv.css">
-<link rel="stylesheet" href="/github-card.css">
 
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-</style>
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/content/cv.css">
+    <link rel="stylesheet" href="/content/github-card.css">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        function openTab(evt, name) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent margin-bottom" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(name).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</head>
 
 <body class="dark-grey">
 
-    <header class="topnav container orange center">
+    <!-- <header class="topnav container orange center">
         <a class="logo" href="#home"><img src="/content/JQIOLogo.png" /></a>
         <a class="link" href="#contact">Projects</a>
         <a class="link" href="#contact">Contact</a>
-    </header>
+    </header> -->
 
     <!-- Page Container -->
     <div class="content margin-top" style="max-width:1400px;">
@@ -32,35 +55,17 @@
 
                     <div class="container">
 
-                        <div class="github-card user-card" style="background: none">
+                        <div class="github-card user-card" style="background: none; margin-top: 110px">
                             <a class="avatar" href="https://github.com/justquick" target="_top"><img src="https://avatars2.githubusercontent.com/u/35289?v=4&amp;s=200" alt="Justin Quick"></a>
                         </div>
+                        <hr>
                         <p class="text-orange xlarge info-item"><i class="fa fa-briefcase"></i><span class="margin-left">CEO &amp; Chief Technologist</span></p>
                         <p class="text-orange xlarge info-item"><i class="fa fa-globe"></i><span class="margin-left">Baltimore, MD</span></p>
                         <p class="text-orange xlarge info-item"><i class="fa fa-envelope"></i><a class="margin-left text-orange" href="mailto:justquick@gmail.com">justquick@gmail.com</a></p>
                         <p class="text-orange xlarge info-item"><i class="fa fa-phone"></i><a href="tel:+14109419553" class="margin-left">410.941.9553</a></p>
-                        <hr>
-
-                        <p class="large"><b><i class="fa fa-asterisk fa-fw margin-right text-orange"></i>Skills</b></p>
-                        <p>Adobe Photoshop</p>
-                        <div class="light-grey round-xlarge small">
-                            <div class="container center round-xlarge orange" style="width:90%">90%</div>
-                        </div>
-                        <p>Photography</p>
-                        <div class="light-grey round-xlarge small">
-                            <div class="container center round-xlarge orange" style="width:80%">
-                                <div class="center text-white">80%</div>
-                            </div>
-                        </div>
-                        <p>Illustrator</p>
-                        <div class="light-grey round-xlarge small">
-                            <div class="container center round-xlarge orange" style="width:75%">75%</div>
-                        </div>
-                        <p>Media</p>
-                        <div class="light-grey round-xlarge small">
-                            <div class="container center round-xlarge orange" style="width:50%">50%</div>
-                        </div>
-                        <br>
+                        <p class="text-orange xlarge info-item"><i class="fa fa-linkedin-square"></i><a href="https://www.linkedin.com/in/justquick" class="margin-left">linkedin.com/in/justquick</a></p>
+                        <p class="text-orange xlarge info-item"><i class="fa fa-github-square"></i><a href="https://github.com/justquick" class="margin-left">github.com/justquick</a>
+                        </p>
                     </div>
                 </div><br>
 
@@ -70,71 +75,126 @@
             <!-- Right Column -->
             <div class="twothird">
 
-                <div class="container card white margin-bottom">
-
-                    <h2 class="text-grey padding-16"><i class="fa fa-suitcase fa-fw margin-right xxlarge text-orange"></i>Work Experience</h2>
-                    <div class="container">
-
-                        <h5 class="opacity"><b>Front End Developer / w3schools.com</b></h5>
-                        <h6 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Jan 2015 - <span class="tag orange round">Current</span></h6>
-
-
-
-                        <hr>
-                    </div>
-                    <div class="container">
-                        <h5 class="opacity"><b>Web Developer / something.com</b></h5>
-                        <h6 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Mar 2012 - Dec 2014</h6>
-                        <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
-                        <hr>
-                    </div>
-                    <div class="container">
-                        <h5 class="opacity"><b>Graphic Designer / designsomething.com</b></h5>
-                        <h6 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Jun 2010 - Mar 2012</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
-                    </div>
-                </div>
 
                 <div class="container card white">
-                    <h2 class="text-grey padding-16"><i class="fa fa-certificate fa-fw margin-right xxlarge text-orange"></i>Education</h2>
-                    <div class="container">
-                        <h5 class="opacity"><b>W3Schools.com</b></h5>
-                        <h6 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Forever</h6>
-                        <p>Web Development! All I need to know in one place</p>
-                        <hr>
-                    </div>
-                    <div class="container">
-                        <h5 class="opacity"><b>London Business School</b></h5>
-                        <h6 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>2013 - 2015</h6>
-                        <p>Master Degree</p>
-                        <hr>
-                    </div>
-                    <div class="container">
-                        <h5 class="opacity"><b>School of Coding</b></h5>
-                        <h6 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>2010 - 2013</h6>
-                        <p>Bachelor Degree</p><br>
-                    </div>
+                    <h1 class="padding-16" style="font-weight: bold;">
+                        <img src="/content/JQIOLogo.png" style="position: relative;float: right;" />
+                        <i class="fa fa-hand-peace-o fa-fw margin-right text-orange" style="font-size: 50px"></i>Hello and Welcome</h1>
+                    <h2>My name is Jusin and I develop software</h2>
+                    <p class="large">I am making the world better by contributing to open source technologies for organizations and communities specializing in web applications. Ive contributed to projects that span the world and help people have
+                        a
+                        better relationship with technology on the web. </p>
                 </div>
 
-                <!-- End Right Column -->
+                <div class="container  white margin-bottom">
+
+                    <div class="content card white tab margin-bottom">
+                        <button class="tablinks xlarge" onclick="openTab(event, 'projects')">Projects</button>
+                        <button class="tablinks xlarge" onclick="openTab(event, 'skills')">Skills</button>
+                        <button class="tablinks xlarge" onclick="openTab(event, 'work')">Work Experience</button>
+                        <button class="tablinks xlarge" onclick="openTab(event, 'education')">Education</button>
+                    </div>
+
+
+                    <div id="projects" class="tabcontent margin-bottom">
+                        <h2 class="text-grey padding-16"><i class="fa fa-github-alt fa-fw margin-right xxlarge text-orange"></i>Projects</h2>
+                        <p class="large">Here are a collection of my most popular projects. <br>There are more available if you check out my GitHub page at: <i class="fa fa-github-square"></i><a
+                                href="https://github.com/justquick">github.com/justquick</a></p>
+                        <div class="github-widget" data-repo="justquick/google-chartwrapper"></div>
+                        <div class="github-widget" data-repo="justquick/django-activity-stream"></div>
+                        <div class="github-widget" data-repo="justquick/python-googlevoice"></div>
+                        <div class="github-widget" data-repo="justquick/google-chartwrapper"></div>
+                        <div class="github-widget" data-repo="justquick/python-earth"></div>
+                        <div class="github-widget" data-repo="justquick/digit"></div>
+                        <div class="github-widget" data-repo="justquick/mongol"></div>
+                        <div class="github-widget" data-repo="justquick/django-math-captcha"></div>
+                    </div>
+
+                    <div id="work" class="tabcontent margin-bottom">
+                        <h2 class="text-grey padding-16"><i class="fa fa-suitcase fa-fw margin-right xxlarge text-orange"></i>Work Experience</h2>
+
+                        <div class="container">
+                            <h3 class="opacity"><b>Gnarwhal Studios, INC.</b></h3>
+                            <h4 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>2005 - Dec Present</h4>
+                            <h5>Oversee the technical decisions for the production websites of Gnarhwhal
+                                Studios and the Humans vs Zombies game. Lead project architect for game
+                                engine design and future products. We produce games such as <a href="http://humansvszombies.org">Humans Vs Zombies</a> and <a href="http://slap45.com">Slap 45</a>. Company site is <a href="http://gnarwhalstudios.com/">http://gnarwhalstudios.com/</a></h5>
+                            <hr>
+                        </div>
+
+                        <div class="container">
+                            <h3 class="opacity"><b>REW Consulting Services</b></h3>
+                            <h3 class="opacity">Software Engineer</h3>
+                            <h4 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Jan 2015 - <span class="tag orange round">Current</span></h4>
+                            <p>Web application developer focusing on ReST API delivery for a configuration management automation service</p>
+                            <hr>
+                        </div>
+
+                        <div class="container">
+                            <h3 class="opacity"><b>Graphic Designer / designsomething.com</b></h3>
+                            <h4 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Jun 2010 - Mar 2012</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+                        </div>
+                    </div>
+
+                    <div id="skills" class="tabcontent margin-bottom">
+                        <h2 class="text-grey padding-16"><i class="fa fa-check-square-o fa-fw margin-right xxlarge text-orange"></i>Skills</h2>
+                        <div class="container">
+                            <h3 class="opacity"><b>Python</b></h3>
+                            <div class="light-grey round-xlarge">
+                                <div class="container center round-xlarge orange" style="width:90%">90%</div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <h3 class="opacity"><b>Django</b></h3>
+                            <div class="light-grey round-xlarge">
+                                <div class="container center round-xlarge orange" style="width:80%">
+                                    <div class="center text-white">80%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <h3 class="opacity"><b>NodeJS & JavaScript</b></h3>
+                            <div class="light-grey round-xlarge">
+                                <div class="container center round-xlarge orange" style="width:75%">75%</div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <h3 class="opacity"><b>HTML & CSS</b></h3>
+                            <div class="light-grey round-xlarge">
+                                <div class="container center round-xlarge orange" style="width:50%">50%</div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <h3 class="opacity"><b>Linux Sys Admin</b></h3>
+                            <div class="light-grey round-xlarge">
+                                <div class="container center round-xlarge orange" style="width:75%">75%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="education" class="tabcontent margin-bottom">
+                        <h2 class="text-grey padding-16"><i class="fa fa-book fa-fw margin-right xxlarge text-orange"></i>Education</h2>
+                        <div class="container">
+                            <h3 class="opacity"><b>Goucher College, Towson MD</b></h3>
+                            <h4 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Class of 2009</h4>
+                            <h5>Computer Science Major, Bachelors of Arts</h5>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <!-- End Right Column -->
+                </div>
+
+                <!-- End Grid -->
             </div>
 
-            <!-- End Grid -->
+            <!-- End Page Container -->
         </div>
 
-        <!-- End Page Container -->
-    </div>
-
-    <footer class="container orange center margin-top">
-        <p>Find me on social media.</p>
-        <i class="fa fa-facebook-official hover-opacity"></i>
-        <i class="fa fa-instagram hover-opacity"></i>
-        <i class="fa fa-snapchat hover-opacity"></i>
-        <i class="fa fa-pinterest-p hover-opacity"></i>
-        <i class="fa fa-twitter hover-opacity"></i>
-        <i class="fa fa-linkedin hover-opacity"></i>
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-    </footer>
+        <div class="footer orange">
+            <p>Copyright by Justin Quick and JUSTQUICK, LLC 2019</p>
+        </div>
+        <script type="text/javascript" src="/content/GithubRepoWidget.min.js"></script>
 
 </body>
 
