@@ -66,15 +66,15 @@
 
                         <div class="github-card user-card" style="background: none; margin-top: 110px">
                             <a class="avatar" href="https://github.com/justquick" target="_top"><img src="https://avatars2.githubusercontent.com/u/35289?v=4&amp;s=200" alt="Justin Quick"></a>
-                            <p class="large">Software Developer and Technologist</p>
+                            <p class="xlarge">Software Developer and Technologist</p>
                         </div>
                         <hr>
-                        <p class="text-orange xlarge info-item"><i class="fa fa-briefcase"></i><span class="margin-left">CEO of <a href="http://justquick.io">JUSTQUICK, LLC</a> &amp; CTO of <a href="http://gnarwhalstudios.com/">Gnarwhal Studios</a></span></p>
-                        <p class="text-orange xlarge info-item"><i class="fa fa-globe"></i><span class="margin-left">Baltimore, MD</span></p>
-                        <p class="text-orange xlarge info-item"><i class="fa fa-envelope"></i><a class="margin-left text-orange" href="mailto:justquick@gmail.com">justquick@gmail.com</a></p>
-                        <p class="text-orange xlarge info-item"><i class="fa fa-phone"></i><a href="tel:+14109419553" class="margin-left">410.941.9553</a></p>
-                        <p class="text-orange xlarge info-item"><i class="fa fa-linkedin-square"></i><a href="https://www.linkedin.com/in/justquick" class="margin-left">linkedin.com/in/justquick</a></p>
-                        <p class="text-orange xlarge info-item"><i class="fa fa-github-square"></i><a href="https://github.com/justquick" class="margin-left">github.com/justquick</a>
+                        <p class="text-orange large info-item"><i class="fa fa-briefcase"></i><span class="margin-left">CEO of <a href="http://justquick.io">JUSTQUICK, LLC</a> &amp;<br/> CTO of <a href="http://gnarwhalstudios.com/">Gnarwhal Studios, INC.</a></span></p>
+                        <p class="text-orange large info-item"><i class="fa fa-globe"></i><span class="margin-left">Baltimore, MD</span></p>
+                        <p class="text-orange large info-item"><i class="fa fa-envelope"></i><a class="margin-left text-orange" href="mailto:justquick@gmail.com">justquick@gmail.com</a></p>
+                        <p class="text-orange large info-item"><i class="fa fa-phone"></i><a href="tel:+14109419553" class="margin-left">410.941.9553</a></p>
+                        <p class="text-orange large info-item"><i class="fa fa-linkedin-square"></i><a href="https://www.linkedin.com/in/justquick" class="margin-left">linkedin.com/in/justquick</a></p>
+                        <p class="text-orange large info-item"><i class="fa fa-github-square"></i><a href="https://github.com/justquick" class="margin-left">github.com/justquick</a>
                         </p>
                     </div>
                 </div><br>
@@ -110,14 +110,26 @@
                     <div id="projects" class="tabcontent margin-bottom">
                         <h2 class="text-grey padding-16"><i class="fa fa-github-alt fa-fw margin-right xxlarge text-orange"></i>Projects</h2>
                         <p class="large">Here are a collection of my most popular projects. <br>There are more available if you check out my GitHub page at: <i class="fa fa-github-square"></i><a href="https://github.com/justquick">github.com/justquick</a></p>
-                        <div class="github-widget" data-repo="justquick/google-chartwrapper"></div>
+                        <div class="github-widget" data-repo="justquick/google-chartwrapper">
+                        </div>
+                        <img src="http://chart.apis.google.com/chart?chds=0,100&chd=t:100.0,80.0,60.0,30.0,30.0,30.0,10.0&chs=150x75&cht=v" style="
+    float: right;
+    display: block;
+    padding: 0 15px;
+">
+                            <p>My first big project, GChartWrapper is a small Python wrapper around the Google Charts Image API. I began writing this app in college and before long I found that it was adopted by <a href="https://code.google.com/archive/p/google-chartwrapper/wikis/WhoUsesTheWrapper.wiki">many different places all over the internet</a>. The library supports making fancy charts like this beauty here.</p>
+                        <hr>
                         <div class="github-widget" data-repo="justquick/django-activity-stream"></div>
+                        <p>My biggest project so far with thousands of downloads daily from PyPI. This is a Django Implementation of the <a href="http://activitystrea.ms/">activity streams protocol</a>. It's a project space Ive gotten interested in and am assisting the working group on developing new version drafts. Loads more <a href="https://django-activity-stream.readthedocs.io/en/latest/">information, examples and concepts available on the docs</a>.</p>
+                        <hr>
                         <div class="github-widget" data-repo="justquick/python-googlevoice"></div>
-                        <div class="github-widget" data-repo="justquick/google-chartwrapper"></div>
-                        <div class="github-widget" data-repo="justquick/python-earth"></div>
+                        <p>This project is a Python implementation of the Google Voice App. There was no official API for the service so I used my browser to reverse engineer the functionality and put it into ReST calls you could make through Python and preserve session info. This lead to a bit of an arms race between me and Google after they added an extra layer of auth to thwart what I was able to do. I got around it once but they have since added more layers of security which arent worth my time anymore to get around so the project is defunct</p>
+                        <hr>
                         <div class="github-widget" data-repo="justquick/digit"></div>
+                        <p>A simiple HTML5 browser game. I tried to emulate the sand level of Super Mario 2 so you can dig up blocks of earth to avoid baddies. <a href="/digit/index.html">Give it a try yourself here</a></p>
+                        <hr>
                         <div class="github-widget" data-repo="justquick/mongol"></div>
-                        <div class="github-widget" data-repo="justquick/django-math-captcha"></div>
+                        <p>My first venture into nonrel DBMS to create a pixel tracking software used on the Washington Times to track user analytics and provide an easy way to aggregate usage statistics</p>
                     </div>
 
                     <div id="work" class="tabcontent margin-bottom">
@@ -225,7 +237,7 @@
                         <div class="container">
                             <h3 class="opacity"><b>Django</b></h3>
                             <div class="light-grey round-xlarge">
-                                <div class="container center round-xlarge orange" style="width:80%">
+                                <div class="container center round-xlarge orange" style="width:85%">
                                     <div class="center text-white">80%</div>
                                 </div>
                             </div>
@@ -233,19 +245,19 @@
                         <div class="container">
                             <h3 class="opacity"><b>NodeJS & JavaScript</b></h3>
                             <div class="light-grey round-xlarge">
-                                <div class="container center round-xlarge orange" style="width:75%">75%</div>
+                                <div class="container center round-xlarge orange" style="width:80%">75%</div>
                             </div>
                         </div>
                         <div class="container">
                             <h3 class="opacity"><b>HTML & CSS</b></h3>
                             <div class="light-grey round-xlarge">
-                                <div class="container center round-xlarge orange" style="width:50%">50%</div>
+                                <div class="container center round-xlarge orange" style="width:75%">50%</div>
                             </div>
                         </div>
                         <div class="container">
                             <h3 class="opacity"><b>Linux Sys Admin</b></h3>
                             <div class="light-grey round-xlarge">
-                                <div class="container center round-xlarge orange" style="width:75%">75%</div>
+                                <div class="container center round-xlarge orange" style="width:80%">75%</div>
                             </div>
                         </div>
                     </div>
