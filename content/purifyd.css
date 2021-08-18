@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  zoom:90%;
     margin: 0;
     height: 100%;
     background: url(/content/leafheart.jpg) no-repeat center center fixed;
