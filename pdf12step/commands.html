@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Running the 12step commands &#8212; pdf12step  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example Program Output" href="examples.html" />
+    <link rel="prev" title="Using the tool" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="running-the-12step-commands">
+<h1>Running the 12step commands<a class="headerlink" href="#running-the-12step-commands" title="Permalink to this headline">¶</a></h1>
+<section id="step-init">
+<h2>12step-init<a class="headerlink" href="#step-init" title="Permalink to this headline">¶</a></h2>
+<p>Iniitialize your custom configuration interactively by answering a few questions</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: 12step-init [-h] [-o OUTPUT]</span>
+</pre></div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-init-h">
+<span id="cmdoption-12step-init-help"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-12step-init-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>show this help message and exit</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-init-o">
+<span id="cmdoption-12step-init-output"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;output&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--output</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;output&gt;</span></span><a class="headerlink" href="#cmdoption-12step-init-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filename to output your config to</p>
+</dd></dl>
+
+</section>
+<section id="step-download">
+<h2>12step-download<a class="headerlink" href="#step-download" title="Permalink to this headline">¶</a></h2>
+<p>Download meeting data from a WordPress site with 12-step-meeting-list plugin.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: 12step-download [-h] [--config CONFIG] [--verbose] [--logfile LOGFILE]</span>
+<span class="go">                       [-u SITE_URL] [-f {json,csv}] [-s SECTIONS]</span>
+</pre></div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-download-h">
+<span id="cmdoption-12step-download-help"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-12step-download-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>show this help message and exit</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-download-config">
+<span id="cmdoption-12step-download-c"></span><span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;config&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;config&gt;</span></span><a class="headerlink" href="#cmdoption-12step-download-config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configs file for runtime vars. Can pass multiple to override options.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-download-verbose">
+<span id="cmdoption-12step-download-v"></span><span class="sig-name descname"><span class="pre">--verbose</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-12step-download-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>More verbose logging</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-download-logfile">
+<span class="sig-name descname"><span class="pre">--logfile</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;logfile&gt;</span></span><a class="headerlink" href="#cmdoption-12step-download-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional log file to wrie to</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-download-u">
+<span id="cmdoption-12step-download-site-url"></span><span class="sig-name descname"><span class="pre">-u</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;site_url&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--site-url</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;site_url&gt;</span></span><a class="headerlink" href="#cmdoption-12step-download-u" title="Permalink to this definition">¶</a></dt>
+<dd><p>WordPress Site URL root</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-download-f">
+<span id="cmdoption-12step-download-format"></span><span class="sig-name descname"><span class="pre">-f</span></span><span class="sig-prename descclassname"> <span class="pre">{json,csv}</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--format</span></span><span class="sig-prename descclassname"> <span class="pre">{json,csv}</span></span><a class="headerlink" href="#cmdoption-12step-download-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format of downloaded meeting data</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-download-s">
+<span id="cmdoption-12step-download-sections"></span><span class="sig-name descname"><span class="pre">-s</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;sections&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--sections</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;sections&gt;</span></span><a class="headerlink" href="#cmdoption-12step-download-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comma separated list of sections to download</p>
+</dd></dl>
+
+</section>
+<section id="step-pdf">
+<h2>12step-pdf<a class="headerlink" href="#step-pdf" title="Permalink to this headline">¶</a></h2>
+<p>Format meeting PDF</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: 12step-pdf [-h] [--config CONFIG] [--verbose] [--logfile LOGFILE]</span>
+<span class="go">                  [--output OUTPUT] [--download] [--limit LIMIT]</span>
+</pre></div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-pdf-h">
+<span id="cmdoption-12step-pdf-help"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-12step-pdf-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>show this help message and exit</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-pdf-config">
+<span id="cmdoption-12step-pdf-c"></span><span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;config&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;config&gt;</span></span><a class="headerlink" href="#cmdoption-12step-pdf-config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configs file for runtime vars. Can pass multiple to override options.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-pdf-verbose">
+<span id="cmdoption-12step-pdf-v"></span><span class="sig-name descname"><span class="pre">--verbose</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-12step-pdf-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>More verbose logging</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-pdf-logfile">
+<span class="sig-name descname"><span class="pre">--logfile</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;logfile&gt;</span></span><a class="headerlink" href="#cmdoption-12step-pdf-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional log file to wrie to</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-pdf-output">
+<span id="cmdoption-12step-pdf-o"></span><span class="sig-name descname"><span class="pre">--output</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;output&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;output&gt;</span></span><a class="headerlink" href="#cmdoption-12step-pdf-output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file name to render to. Use “-” for stdout</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-pdf-download">
+<span id="cmdoption-12step-pdf-d"></span><span class="sig-name descname"><span class="pre">--download</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-d</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-12step-pdf-download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download the assets before rendering. Produces up to date PDFs</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-pdf-limit">
+<span id="cmdoption-12step-pdf-l"></span><span class="sig-name descname"><span class="pre">--limit</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;limit&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-l</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;limit&gt;</span></span><a class="headerlink" href="#cmdoption-12step-pdf-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limit the rendering to this number of meetings</p>
+</dd></dl>
+
+</section>
+<section id="step-flask">
+<h2>12step-flask<a class="headerlink" href="#step-flask" title="Permalink to this headline">¶</a></h2>
+<p>Run Flask webapp for Development. This should never be run in production! You must restart this if you make any changes to code or asset files</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: 12step-flask [-h] [-a ADDRESS] [-p PORT]</span>
+</pre></div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-flask-h">
+<span id="cmdoption-12step-flask-help"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-12step-flask-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>show this help message and exit</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-flask-a">
+<span id="cmdoption-12step-flask-address"></span><span class="sig-name descname"><span class="pre">-a</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;address&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--address</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;address&gt;</span></span><a class="headerlink" href="#cmdoption-12step-flask-a" title="Permalink to this definition">¶</a></dt>
+<dd><p>The host interface address to bind to</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-12step-flask-p">
+<span id="cmdoption-12step-flask-port"></span><span class="sig-name descname"><span class="pre">-p</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;port&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--port</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;port&gt;</span></span><a class="headerlink" href="#cmdoption-12step-flask-p" title="Permalink to this definition">¶</a></dt>
+<dd><p>The port to bind to</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/img/logo.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Generates PDFs meeting guides from sites using the 12 Step Meeting List WordPress plugin</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=justquick&repo=pdf12step&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using the tool</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running the 12step commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-init">12step-init</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-download">12step-download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-pdf">12step-pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-flask">12step-flask</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Program Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdf12step.html">API</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Using the tool</a></li>
+      <li>Next: <a href="examples.html" title="next chapter">Example Program Output</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Justin Quick.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/commands.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/justquick/pdf12step" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="_static/img/fork.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

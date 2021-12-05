@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pdf12step.templating &#8212; pdf12step  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/style.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for pdf12step.templating</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">makedirs</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pformat</span>
+
+<span class="kn">from</span> <span class="nn">weasyprint</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span><span class="p">,</span> <span class="n">FileSystemBytecodeCache</span><span class="p">,</span> <span class="n">select_autoescape</span>
+<span class="kn">from</span> <span class="nn">markupsafe</span> <span class="kn">import</span> <span class="n">Markup</span>
+
+<span class="kn">from</span> <span class="nn">pdf12step.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">pdf12step.meetings</span> <span class="kn">import</span> <span class="n">MeetingSet</span><span class="p">,</span> <span class="n">DAYS</span>
+<span class="kn">from</span> <span class="nn">pdf12step.cached</span> <span class="kn">import</span> <span class="n">cached_property</span>
+<span class="kn">from</span> <span class="nn">pdf12step.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">pdf12step.config</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">DATA_DIR</span>
+
+
+<span class="n">FSBC</span> <span class="o">=</span> <span class="n">FileSystemBytecodeCache</span><span class="p">()</span>
+<span class="n">LAYOUT_TEMPLATE</span> <span class="o">=</span> <span class="s1">&#39;layout.html&#39;</span>
+<span class="n">DIR</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">ASSET_TEMPLATES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;assets/img/cover_background.svg&#39;</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;cover_background.svg&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;assets/css/style.css&#39;</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="s1">&#39;css&#39;</span><span class="p">,</span> <span class="s1">&#39;style.css&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="slugify"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.slugify">[docs]</a><span class="k">def</span> <span class="nf">slugify</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Turns str into slug value</span>
+
+<span class="sd">    :param str value: Regular string to slugify</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s-]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[-\s]+&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="codify"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.codify">[docs]</a><span class="k">def</span> <span class="nf">codify</span><span class="p">(</span><span class="n">codemap</span><span class="p">,</span> <span class="n">filtercodes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filters codes list in values to renamed/ignored list of codes</span>
+
+<span class="sd">    :param dict codemap: Mapping of codes to names to use in display</span>
+<span class="sd">    :param list filtercodes: List of codes to ignore</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+        <span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="n">codemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">values</span> <span class="k">if</span> <span class="n">code</span> <span class="ow">and</span> <span class="n">code</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">filtercodes</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">codes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inner</span></div>
+
+
+<div class="viewcode-block" id="link"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.link">[docs]</a><span class="k">def</span> <span class="nf">link</span><span class="p">(</span><span class="n">show</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Displays an &lt;a&gt; tag for the given url and name</span>
+<span class="sd">    If show (config.show_links) is False, just returns name</span>
+
+<span class="sd">    :param bool show: True if to display &lt;a&gt; tags</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39; id=&quot;</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1">&quot;&#39;</span> <span class="k">if</span> <span class="nb">id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">return</span> <span class="n">Markup</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&lt;a</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1"> href=&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot;&gt;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&lt;/a&gt;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span>
+    <span class="k">return</span> <span class="n">inner</span></div>
+
+
+<div class="viewcode-block" id="Context"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.Context">[docs]</a><span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Context for jinja2 templating</span>
+
+<span class="sd">    :param dict args: Runtime arguments to inject into template context</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="nb">dict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_flask</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;flask&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="n">Client</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">site_url</span><span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">meetings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_meetings</span><span class="p">(),</span>
+            <span class="n">DAYS</span><span class="o">=</span><span class="n">DAYS</span><span class="p">,</span>
+            <span class="n">now</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="n">zipcodes_by_region</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">zipcodes_by_region</span><span class="p">,</span>
+            <span class="n">stylesheets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stylesheets</span><span class="p">,</span>
+            <span class="n">slugify</span><span class="o">=</span><span class="n">slugify</span><span class="p">,</span>
+            <span class="n">codify</span><span class="o">=</span><span class="n">codify</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">codemap</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">filtercodes</span><span class="p">),</span>
+            <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">show_links</span><span class="p">),</span>
+            <span class="n">config</span><span class="o">=</span><span class="n">config</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Loaded context config&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">pformat</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">zipcodes_by_region</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a mapping of region-&gt;zipcode for zipcode list in config</span>
+
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">zbr</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">zipcode</span><span class="p">,</span> <span class="n">region</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">zipcodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">zbr</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">zipcode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">zbr</span>
+
+<div class="viewcode-block" id="Context.get_meetings"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.Context.get_meetings">[docs]</a>    <span class="k">def</span> <span class="nf">get_meetings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Loads list of meetings for main context based on filters/limiting</span>
+
+<span class="sd">        :rtype: MeetingSet</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">meetings_file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s1">&#39;meetings.json&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">meetings_file</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Meeting data file </span><span class="si">{</span><span class="n">meetings_file</span><span class="si">}</span><span class="s1"> not found! Please download first&#39;</span><span class="p">)</span>
+        <span class="n">meetings</span> <span class="o">=</span> <span class="n">MeetingSet</span><span class="p">(</span><span class="n">meetings_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s1">&#39;attendance_options&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">meetings</span> <span class="o">=</span> <span class="n">meetings</span><span class="o">.</span><span class="n">by_value</span><span class="p">(</span><span class="s1">&#39;attendance_option&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">meeting_set</span> <span class="k">for</span> <span class="n">attendance_option</span><span class="p">,</span> <span class="n">meeting_set</span> <span class="ow">in</span> <span class="n">meetings</span>
+                       <span class="k">if</span> <span class="n">attendance_option</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">attendance_options</span><span class="p">]</span>
+            <span class="n">meetings</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+        <span class="n">limit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">limit</span><span class="p">:</span>
+            <span class="n">meetings</span> <span class="o">=</span> <span class="n">meetings</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">limit</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">meetings</span></div>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">stylesheets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of CSS stylesheets to include.</span>
+<span class="sd">        Adds default stylesheet `assets/css/style.css` first and adds others from config.stylesheets</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sheets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;assets/css/style.css&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">stylesheets</span><span class="p">:</span>
+            <span class="n">sheets</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">sheet</span><span class="p">)</span> <span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">stylesheets</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">sheets</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">template_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of template directories for jinja2 to search</span>
+<span class="sd">        Adds default stylesheet `pdf12step/templates` first and adds others from config.stylesheets</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="s1">&#39;templates&#39;</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">template_dirs</span><span class="p">:</span>
+            <span class="n">dirs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">tdir</span><span class="p">)</span> <span class="k">for</span> <span class="n">tdir</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">template_dirs</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">dirs</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">env</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns jinja2 Environment used to render all templates.</span>
+
+<span class="sd">        :rtype: jinja2.Environment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">global</span> <span class="n">FSBC</span>
+        <span class="n">environ</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span>
+            <span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_dirs</span><span class="p">),</span>
+            <span class="n">autoescape</span><span class="o">=</span><span class="n">select_autoescape</span><span class="p">(),</span>
+            <span class="n">bytecode_cache</span><span class="o">=</span><span class="n">FSBC</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Loaded template env&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">environ</span>
+
+<div class="viewcode-block" id="Context.render"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.Context.render">[docs]</a>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Renders a template by name and returns its content</span>
+
+<span class="sd">        :param str template: relative name of template to load</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Renderd </span><span class="si">{</span><span class="n">template</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Context.prerender"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.Context.prerender">[docs]</a>    <span class="k">def</span> <span class="nf">prerender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prerenders the assets ahead of page render to ensure proper values in assets are set</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">template</span><span class="p">,</span> <span class="n">dest</span> <span class="ow">in</span> <span class="n">ASSET_TEMPLATES</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">dest_dir</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dest_dir</span><span class="p">):</span>
+                <span class="n">makedirs</span><span class="p">(</span><span class="n">dest_dir</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">destfile</span><span class="p">:</span>
+                <span class="n">destfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">template</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Context.html"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.Context.html">[docs]</a>    <span class="k">def</span> <span class="nf">html</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the weasyprint HTML instance from this ontext</span>
+
+<span class="sd">        :rtype: weasyprint.HTML</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">LAYOUT_TEMPLATE</span><span class="p">),</span> <span class="n">base_url</span><span class="o">=</span><span class="n">DIR</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Context.pdf"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.Context.pdf">[docs]</a>    <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the PDF content from this  of context</span>
+
+<span class="sd">        :rtype: bytes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">html</span><span class="p">()</span><span class="o">.</span><span class="n">render</span><span class="p">()</span><span class="o">.</span><span class="n">write_pdf</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/img/logo.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Generates PDFs meeting guides from sites using the 12 Step Meeting List WordPress plugin</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=justquick&repo=pdf12step&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Using the tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commands.html">Running the 12step commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Example Program Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pdf12step.html">API</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Justin Quick.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/justquick/pdf12step" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="../../_static/img/fork.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
