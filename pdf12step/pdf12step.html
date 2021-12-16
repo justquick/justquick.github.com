@@ -16,6 +16,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="CHANGELOG.html" />
     <link rel="prev" title="Example Program Output" href="examples.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -167,6 +168,11 @@ Bypasses WP CSRF protection</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pdf12step.client.json_dump">
+<span class="sig-prename descclassname"><span class="pre">pdf12step.client.</span></span><span class="sig-name descname"><span class="pre">json_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pdf12step/client.html#json_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pdf12step.client.json_dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="module-pdf12step.config">
 <span id="pdf12step-config"></span><h2>pdf12step.config<a class="headerlink" href="#module-pdf12step.config" title="Permalink to this headline">¶</a></h2>
@@ -272,6 +278,18 @@ Defines sane defaults and loads config values from YAML config file</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="pdf12step.meetings.Meeting.is_conference">
+<span class="sig-name descname"><span class="pre">is_conference</span></span><a class="headerlink" href="#pdf12step.meetings.Meeting.is_conference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the attendance_option is either online or hybrid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pdf12step.meetings.Meeting.latlon">
+<span class="sig-name descname"><span class="pre">latlon</span></span><a class="headerlink" href="#pdf12step.meetings.Meeting.latlon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the latitude,longitude tuple for usage in map locations</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="pdf12step.meetings.Meeting.notes_list">
 <span class="sig-name descname"><span class="pre">notes_list</span></span><a class="headerlink" href="#pdf12step.meetings.Meeting.notes_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of notes</p>
@@ -289,6 +307,12 @@ Defines sane defaults and loads config values from YAML config file</p>
 <dt class="sig sig-object py" id="pdf12step.meetings.MeetingSet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pdf12step.meetings.</span></span><span class="sig-name descname"><span class="pre">MeetingSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn_or_obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pdf12step/meetings.html#MeetingSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pdf12step.meetings.MeetingSet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pdf12step.meetings.MeetingSet.by_id">
+<span class="sig-name descname"><span class="pre">by_id</span></span><a class="headerlink" href="#pdf12step.meetings.MeetingSet.by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary mapping between the Meeting’s ID and the Meeting object itself</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pdf12step.meetings.MeetingSet.by_value">
 <span class="sig-name descname"><span class="pre">by_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pdf12step/meetings.html#MeetingSet.by_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pdf12step.meetings.MeetingSet.by_value" title="Permalink to this definition">¶</a></dt>
@@ -367,13 +391,22 @@ Used to show which meetings meet in which zipcode and on which days</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pdf12step.meetings.MeetingSet.value_set">
-<span class="sig-name descname"><span class="pre">value_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">attrs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pdf12step/meetings.html#MeetingSet.value_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pdf12step.meetings.MeetingSet.value_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a set of unique values for the passed atribute names</p>
+<span class="sig-name descname"><span class="pre">value_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_none</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pdf12step/meetings.html#MeetingSet.value_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pdf12step.meetings.MeetingSet.value_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of unique values for the passed atribute name</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>set</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attr</strong> (<em>str</em>) – Attribute name of a Meeting</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>set</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pdf12step.meetings.MeetingSet.zipcodes">
+<span class="sig-name descname"><span class="pre">zipcodes</span></span><a class="headerlink" href="#pdf12step.meetings.MeetingSet.zipcodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of all zipcodes for meetings in the MeetingSet</p>
 </dd></dl>
 
 </dd></dl>
@@ -412,6 +445,17 @@ Used to show which meetings meet in which zipcode and on which days</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>jinja2.Environment</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pdf12step.templating.Context.filtered_codes">
+<span class="sig-name descname"><span class="pre">filtered_codes</span></span><a class="headerlink" href="#pdf12step.templating.Context.filtered_codes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of meeting (code, name) after the codes have been filtered and remapped</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -593,6 +637,7 @@ If show (config.show_links) is False, just returns name</p>
 <li class="toctree-l2"><a class="reference internal" href="#module-pdf12step.templating">pdf12step.templating</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
 
 <div class="relations">
@@ -600,6 +645,7 @@ If show (config.show_links) is False, just returns name</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="examples.html" title="previous chapter">Example Program Output</a></li>
+      <li>Next: <a href="CHANGELOG.html" title="next chapter">Changelog</a></li>
   </ul></li>
 </ul>
 </div>

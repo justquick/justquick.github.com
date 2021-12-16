@@ -114,7 +114,21 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a list of notes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()]</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()]</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">latlon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the latitude,longitude tuple for usage in map locations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">is_conference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if the attendance_option is either online or hybrid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attendance_option</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;online&#39;</span><span class="p">,</span> <span class="s1">&#39;hybrid&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MeetingSet"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.meetings.MeetingSet">[docs]</a><span class="k">class</span> <span class="nc">MeetingSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -151,23 +165,23 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">MeetingSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[:</span><span class="n">num</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="MeetingSet.value_set"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.meetings.MeetingSet.value_set">[docs]</a>    <span class="k">def</span> <span class="nf">value_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">attrs</span><span class="p">):</span>
+<div class="viewcode-block" id="MeetingSet.value_set"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.meetings.MeetingSet.value_set">[docs]</a>    <span class="k">def</span> <span class="nf">value_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filter_none</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a set of unique values for the passed atribute names</span>
+<span class="sd">        Returns a set of unique values for the passed atribute name</span>
 
+<span class="sd">        :param str attr: Attribute name of a Meeting</span>
 <span class="sd">        :rtype: set</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">ts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">vset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
-            <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
-                <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
-                <span class="n">ts</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">val</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="k">else</span> <span class="p">[</span><span class="n">val</span><span class="p">])</span>
-        <span class="n">ts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="n">attr</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">)]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ts</span><span class="p">)</span></div>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">item</span> <span class="k">else</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">filter_none</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">vset</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">vset</span><span class="p">)</span> <span class="k">if</span> <span class="n">sort</span> <span class="k">else</span> <span class="n">vset</span></div>
 
 <div class="viewcode-block" id="MeetingSet.value_count"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.meetings.MeetingSet.value_count">[docs]</a>    <span class="k">def</span> <span class="nf">value_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -214,6 +228,13 @@
         <span class="k">return</span> <span class="n">MeetingSet</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">keyfunc</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">))</span></div>
 
     <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a dictionary mapping between the Meeting&#39;s ID and the Meeting object itself</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">meeting</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="n">meeting</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">meeting</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">by_value</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)}</span>
+
+    <span class="nd">@cached_property</span>
     <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns sorted list of meeting index section information</span>
@@ -249,7 +270,14 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a value_set of types</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_set</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_set</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">zipcodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a set of all zipcodes for meetings in the MeetingSet</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_set</span><span class="p">(</span><span class="s1">&#39;zipcode&#39;</span><span class="p">,</span> <span class="n">filter_none</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
@@ -291,6 +319,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../commands.html">Running the 12step commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Example Program Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pdf12step.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
 <div class="relations">

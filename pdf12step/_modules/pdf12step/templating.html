@@ -108,6 +108,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="nb">dict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data_dir&#39;</span><span class="p">,</span> <span class="n">DATA_DIR</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_flask</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;flask&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
@@ -117,6 +118,7 @@
             <span class="n">DAYS</span><span class="o">=</span><span class="n">DAYS</span><span class="p">,</span>
             <span class="n">now</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
             <span class="n">zipcodes_by_region</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">zipcodes_by_region</span><span class="p">,</span>
+            <span class="n">filtered_codes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filtered_codes</span><span class="p">,</span>
             <span class="n">stylesheets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stylesheets</span><span class="p">,</span>
             <span class="n">slugify</span><span class="o">=</span><span class="n">slugify</span><span class="p">,</span>
             <span class="n">codify</span><span class="o">=</span><span class="n">codify</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">codemap</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">filtercodes</span><span class="p">),</span>
@@ -138,13 +140,28 @@
             <span class="n">zbr</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">zipcode</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">zbr</span>
 
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">filtered_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of meeting (code, name) after the codes have been filtered and remapped</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">codes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">code</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">meetingcodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">code</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">filtercodes</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">codemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+            <span class="n">codes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">codes</span>
+
 <div class="viewcode-block" id="Context.get_meetings"><a class="viewcode-back" href="../../pdf12step.html#pdf12step.templating.Context.get_meetings">[docs]</a>    <span class="k">def</span> <span class="nf">get_meetings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Loads list of meetings for main context based on filters/limiting</span>
 
 <span class="sd">        :rtype: MeetingSet</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">meetings_file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s1">&#39;meetings.json&#39;</span><span class="p">)</span>
+        <span class="n">meetings_file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;meetings.json&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">meetings_file</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Meeting data file </span><span class="si">{</span><span class="n">meetings_file</span><span class="si">}</span><span class="s1"> not found! Please download first&#39;</span><span class="p">)</span>
         <span class="n">meetings</span> <span class="o">=</span> <span class="n">MeetingSet</span><span class="p">(</span><span class="n">meetings_file</span><span class="p">)</span>
@@ -168,7 +185,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sheets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;assets/css/style.css&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">stylesheets</span><span class="p">:</span>
-            <span class="n">sheets</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">sheet</span><span class="p">)</span> <span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">stylesheets</span><span class="p">])</span>
+            <span class="n">sheets</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">sheet</span><span class="p">))</span> <span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">stylesheets</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">sheets</span>
 
     <span class="nd">@cached_property</span>
@@ -181,7 +198,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">dirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="s1">&#39;templates&#39;</span><span class="p">)]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">template_dirs</span><span class="p">:</span>
-            <span class="n">dirs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">tdir</span><span class="p">)</span> <span class="k">for</span> <span class="n">tdir</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">template_dirs</span><span class="p">])</span>
+            <span class="n">dirs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">tdir</span><span class="p">))</span> <span class="k">for</span> <span class="n">tdir</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">template_dirs</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">dirs</span>
 
     <span class="nd">@cached_property</span>
@@ -277,6 +294,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../commands.html">Running the 12step commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Example Program Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pdf12step.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
 <div class="relations">
