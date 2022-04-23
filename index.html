@@ -7,8 +7,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/content/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/content/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/content/favicon-16x16.png">
-  <link rel="manifest" href="/content/site.webmanifest">
-  <link rel="mask-icon" href="/content/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="/content/purifyd.css">
@@ -28,6 +26,7 @@
     <button class="tablinks" onclick="openTab(event, 'work')">Work Experience </button>
     <button class="tablinks" onclick="openTab(event, 'education')">Education </button>
     <button class="tablinks" onclick="openTab(event, 'contact')">Contact </button>
+    <button class="tablinks" onclick="openTab(event, 'donate')">Donate </button>
   </div>
 
   <!-- Page Container -->
@@ -64,9 +63,6 @@
 
       <!-- Right Column -->
       <div class="twothird">
-
-
-
 
         <div class="container  white margin-bottom">
 
@@ -312,7 +308,7 @@
               <ul class="large">
                 <li>Created the HvZSource project providing a website to manage hosting games across 6 continents</li>
                 <li>Wrote a custom Django application to manage game events and players with tags and kills</li>
-                <li>Mass  email campaign management with SendGrid</li>
+                <li>Mass email campaign management with SendGrid</li>
               </ul>
             </div>
           </div>
@@ -374,6 +370,18 @@
               <h3>Your Message<br><textarea rows="4" cols="50" name="message" placeholder="message"></textarea></h3>
               <button type="submit">Send Message</button>
             </form>
+          </div>
+          <div id="div-donate" class="tabcontent margin-bottom">
+            <h2 class="text-grey padding-16"><i class="fa fa-paypal fa-fw margin-right xxlarge text-orange"></i>Donate</h2>
+            <div class="container">
+              <h3>Please donate below to support my ongoing work in open source. Your donations help keep my projects alive, direct my time to the efforts that i love and keep the lights on. Any amount is appreciated. Payments are processed through PayPal</h3>
+              <form action="https://www.paypal.com/donate" method="post" target="_top">
+                <input type="hidden" name="hosted_button_id" value="AWT8KJVJ39MZ6" />
+                <input width="500" type="image" src="/content/paypal.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+              </form>
+              <img width="400" src="/content/paypal.qr.png"/>
+            </div>
           </div>
           <!-- End Right Column -->
         </div>
