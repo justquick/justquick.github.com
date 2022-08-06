@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <title>JeebusIsGod</title>
+</head>
+
+<body background="index_files/OldPaper9x9.jpg" bgcolor="#ffcc99">
+
+  <p align="center">
+    <a href="">
+      <font color="#800000" face="Comic Sans MS" size="7">JEEBUSisGOD.com</font>
+    </a>
+  <table border="1" cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+        <a href=""><img src="index_files/Black-jeebus.jpg" border="1"></a>
+      </td>
+      <td>
+        <a href=""><img src="index_files/ChristCrucified.jpg" border="1"></a>
+      </td>
+    </tr>
+  </table>
+  </p>
+
+  <p align="center">
+    <img src="index_files/UnderConstruction.gif" />
+  </p>
+  <p align="center">
+    <img src="index_files/OldTestamentRed.gif">
+  </p>
+  <p align="center">
+    {% for b in OT %}
+    {% if loop.index0 % 5 == 0 %}
+    <br>
+    {% endif %}
+    <a href="{{  b }}.html"><img src="index_files/{{ imgs(b) }}"></a>
+    {% endfor %}
+  </p>
+  <p align="center">
+    &nbsp;
+  </p>
+  <p align="center">
+    <img src="index_files/NewTestamentRed.gif" hsrc="BibleButtons/NewTestamentBlue.gif" height="38" width="225">
+  </p>
+  <p align="center">
+    {% for b in NT %}
+    {% if loop.index0 % 5 == 0 %}
+    <br>
+    {% endif %}
+    <a href="{{  b }}.html"><img src="index_files/{{ imgs(b) }}"></a>
+    {% endfor %}
+  </p>
+  <p align="center">
+    <img src="index_files/th_12a.gif" />
+  </p>
+</body>
+
+</html>

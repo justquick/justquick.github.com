@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>{{ title(book) }}</title>
+  <style>
+    pre {
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;
+      white-space: -o-pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body background="index_files/OldPaper9x9.jpg" bgcolor="#ffcc99">
+
+  <h1>{{ title(book) }}</h1>
+  <table>
+    <tr>
+      <td>
+
+        {% include 'html/' +  book + '.txt.html' %}
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
