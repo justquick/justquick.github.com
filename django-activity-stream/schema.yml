@@ -1,0 +1,280 @@
+openapi: 3.0.3
+info:
+  title: Django Activity Streams API
+  version: 1.0.0
+  description: Your project description
+  contact:
+    name: ''
+    email: ''
+paths:
+  /actions/:
+    get:
+      operationId: actions_list
+      tags:
+      - actions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Action'
+          description: ''
+  /actions/{id}/:
+    get:
+      operationId: actions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this action.
+        required: true
+      tags:
+      - actions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+          description: ''
+  /actions/me/:
+    get:
+      operationId: actions_me_retrieve
+      description: Returns the actor_stream for the current user
+      tags:
+      - actions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+          description: ''
+  /actions/model/{content_type_id}/:
+    get:
+      operationId: actions_model_retrieve
+      description: |-
+        Returns all actions for a given content type.
+        See model_stream
+      parameters:
+      - in: path
+        name: content_type_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - actions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+          description: ''
+  /actions/object/{content_type_id}/{object_id}/:
+    get:
+      operationId: actions_object_retrieve
+      description: |-
+        Returns all actions for a given object.
+        See any_stream
+      parameters:
+      - in: path
+        name: content_type_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: object_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - actions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+          description: ''
+  /actions/send/:
+    post:
+      operationId: actions_send_create
+      description: |-
+        Sends the action signal on POST
+        Must have a verb and optional target/action_object with content_type_id/object_id pairs
+        Actor is set as current logged in user
+      tags:
+      - actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Action'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Action'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+          description: ''
+  /follows/:
+    get:
+      operationId: follows_list
+      tags:
+      - follows
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Follow'
+          description: ''
+  /follows/{id}/:
+    get:
+      operationId: follows_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this follow.
+        required: true
+      tags:
+      - follows
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Follow'
+          description: ''
+  /follows/follow/:
+    post:
+      operationId: follows_follow_create
+      description: |-
+        Creates the follow relationship.
+        The current user is set as user and the target is passed with content_type_id/object_id pair
+      tags:
+      - follows
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Follow'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Follow'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Follow'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Follow'
+          description: ''
+components:
+  schemas:
+    Action:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        verb:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+        timestamp:
+          type: string
+          format: date-time
+        actor:
+          type: string
+        target:
+          type: string
+        action_object:
+          type: string
+      required:
+      - action_object
+      - actor
+      - id
+      - target
+      - verb
+    Follow:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        flag:
+          type: string
+          maxLength: 255
+        user:
+          type: string
+        follow_object:
+          type: string
+        started:
+          type: string
+          format: date-time
+        actor_only:
+          type: boolean
+          title: Only follow actions where the object is the target.
+      required:
+      - follow_object
+      - id
+      - user
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+externalDocs:
+  url: ''
+  description: ''
