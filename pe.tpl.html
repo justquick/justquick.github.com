@@ -1,0 +1,12 @@
+{% for skill,yrs in info.skills.items() %}
+    {{skill}} ({{yrs}}){% if not loop.last %}, {% endif %}
+{% endfor %}
+<hr>
+{% for work in works %}
+<b>{{ work.position }}</b> | <i>{{ work.company }}</i> | {{ work.dates }}
+    <ul>
+    {% for duty in work.duties %}
+    <li>{{ duty|safe }}</i>
+    {% endfor %}
+    </ul>
+{% endfor %}
