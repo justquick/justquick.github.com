@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Justin Quick Developer Site</title>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/content/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/content/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/content/favicon-16x16.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/content/purifyd.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="/content/main.js"></script>
+</head>
+
+<body onload="loadLocation()" class="dark-grey">
+
+  <div class="tab">
+    <a onclick="openTab(event, 'home')"><img src="/content/JQLogoOrangeRectangleTightWide.png"
+        style="position: relative;float: left; height: 60px;" /></a>
+    <button class="tablinks" onclick="openTab(event, 'home')">Home </button>
+    <button class="tablinks" onclick="openTab(event, 'projects')">Projects </button>
+    <button class="tablinks" onclick="openTab(event, 'skills')">Skills </button>
+    <button class="tablinks" onclick="openTab(event, 'work')">Work Experience </button>
+    <button class="tablinks" onclick="openTab(event, 'education')">Education </button>
+    <button class="tablinks" onclick="openTab(event, 'contact')">Contact </button>
+    <button class="tablinks" onclick="openTab(event, 'support')">Support </button>
+  </div>
+
+  <!-- Page Container -->
+  <div class="content margin-top" style="max-width:1400px; margin-bottom: 50px;">
+
+    <!-- The Grid -->
+    <div class="row-padding">
+
+      {% include 'left.html' %}
+
+      <!-- Right Column -->
+      <div class="twothird">
+
+        <div class="container  white margin-bottom">
+
+          {% include 'home.html' %}
+          {% include 'projects.html' %}
+          {% include 'skills.html' %}
+          {% include 'work.html' %}
+          {% include 'projects.html' %}
+          {% include 'edu.html' %}
+          {% include 'contact.html' %}
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer orange">
+      <p>Copyright by Justin Quick and JUSTQUICK, LLC 2020-{{ year }}</p>
+    </div>
+    <script type="text/javascript" src="/content/GithubRepoWidget.min.js"></script>
+
+</body>
+
+</html>

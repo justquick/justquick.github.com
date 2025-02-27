@@ -4,13 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-lxml = "*"
 jinja2 = "*"
 pyyaml = "*"
-
+jinja2-cli = "*"
 [dev-packages]
-ipython = "*"
-ipdb = "*"
 
-[requires]
-python_version = "3.12"
+
