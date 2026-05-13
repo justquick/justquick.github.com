@@ -1,18 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}Skills - Justin Quick{% endblock %}
+{% block title %}Skills: Python, Django, Linux, DevOps, AWS — Justin Quick{% endblock %}
+{% block meta_description %}Justin Quick's technical skills: 20 years of Python &amp; Django and Linux systems administration, plus SQL, REST APIs, JavaScript, DevOps, Docker, Kubernetes, AWS cloud infrastructure, and BI analytics.{% endblock %}
+{% block og_title %}Skills: Python, Django, Linux, DevOps, AWS — Justin Quick{% endblock %}
+{% block og_description %}Justin Quick's technical skills: 20 years of Python &amp; Django and Linux systems administration, plus SQL, REST APIs, JavaScript, DevOps, Docker, Kubernetes, AWS cloud infrastructure, and BI analytics.{% endblock %}
+{% block og_url %}skills.html{% endblock %}
 
 {% block page_content %}
-<div class="margin-bottom">
-  <h2 class="text-grey padding-16"><i class="fa fa-code fa-fw margin-right xxlarge text-orange"></i>Skills</h2>
-  <h3>{{ page.content }}</h3>
-  {% for skill in SITEDATA.info.skill_list %}
-  <div class="container">
-    <h3 class="opacity"><b>{{ skill.name }}</b> <span class="text-orange" style="font-size: 0.8em">{{ skill.years }} yrs</span></h3>
-    <div class="light-grey round-xlarge">
-      <div class="container center round-xlarge orange" style="width:{{ skill.percent }}%">{{ skill.percent }}%</div>
-    </div>
-  </div>
-  {% endfor %}
+<div class="section-heading">
+  <i class="fa fa-code fa-fw" aria-hidden="true"></i>
+  <h2>Skills</h2>
 </div>
+<p class="text-muted">{{ page.content }}</p>
+
+{% for skill in SITEDATA.info.skill_list %}
+<div class="skill-item">
+  <div class="skill-header">
+    <span class="skill-name">{{ skill.name }}</span>
+    <span class="skill-years">{{ skill.years }} yrs</span>
+  </div>
+  <div class="skill-track"
+       role="progressbar"
+       aria-valuenow="{{ skill.percent }}"
+       aria-valuemin="0"
+       aria-valuemax="100"
+       aria-label="{{ skill.name }}: {{ skill.years }} years experience">
+    <div class="skill-fill" style="--skill-pct: {{ skill.percent }}%"></div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}

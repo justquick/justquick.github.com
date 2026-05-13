@@ -45,7 +45,7 @@ EXTRA_PATH_METADATA = {}
 
 # Plugins
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['yaml_loader']
+PLUGINS = ['yaml_loader', 'sitemap_gen']
 
 # Default pagination
 DEFAULT_PAGINATION = False

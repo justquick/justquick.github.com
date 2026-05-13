@@ -1,68 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Justin Quick Developer Site</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Justin Quick — Developer &amp; Technologist</title>
+  <meta name="description" content="Justin Quick — Software Developer and Technologist with 20 years of Python, Django, Linux systems administration, DevOps, AWS, and JavaScript expertise. Open-source author and contributor.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Justin Quick">
+  <meta property="og:title" content="Justin Quick — Developer &amp; Technologist">
+  <meta property="og:description" content="Justin Quick — Software Developer and Technologist with 20 years of Python, Django, Linux, DevOps, AWS, and JavaScript expertise. Open-source author and contributor.">
+  <meta property="og:url" content="/index.html">
+  <meta property="og:image" content="https://avatars2.githubusercontent.com/u/35289?v=4&s=200">
+
+  <!-- Schema.org Person structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Justin Quick",
+    "jobTitle": "Software Developer and Technologist",
+    "email": "justquick@gmail.com",
+    "url": "/index.html",
+    "image": "https://avatars2.githubusercontent.com/u/35289?v=4&s=200",
+    "sameAs": [
+      "https://github.com/justquick",
+      "https://www.linkedin.com/in/justquick"
+    ],
+    "knowsAbout": ["Linux Sys Admin", "Python & Django", "SQL", "APIs/Integrations", "JavaScript", "Agile", "DevOps", "Cloud/AWS", "BI Analytics/Data Science"]
+  }
+  </script>
+
   <link rel="apple-touch-icon" sizes="180x180" href="content/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="content/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="content/favicon-16x16.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="content/purifyd.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="content/purifyd.css">
 </head>
-<body class="dark-grey">
-  <div class="tab">
-    <a href="index.html"><img src="content/JQLogoOrangeRectangleTightWide.png" style="position: relative;float: left; height: 60px;" /></a>
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="skills.html">Skills</a>
-    <a href="professional-experience.html">Work Experience</a>
-    <a href="education.html">Education</a>
-<a href="support.html">Support</a>
-  </div>
+<body>
 
-  <div class="content margin-top" style="max-width:1400px; margin-bottom: 50px;">
-    <div class="row-padding">
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html" aria-label="Justin Quick — Home">
+        <span class="logo-text">JQ/I|O</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="professional-experience.html">Work Experience</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-      <div class="third">
-        <div class="white text-grey card-4">
-          <div class="container">
-            <div class="github-card user-card" style="background: none; margin-top: 110px">
-              <a class="avatar" href="https://github.com/justquick" target="_top"><img
-                  src="https://avatars2.githubusercontent.com/u/35289?v=4&amp;s=200" alt="Justin Quick"></a>
-              <p class="xlarge" style="margin: 0;">Software Developer and Technologist</p>
-            </div>
-            <hr>
-            <p class="text-orange large info-item"><i class="fa fa-briefcase"></i><span class="margin-left">CEO of <a href="http://justquick.io">JUSTQUICK, LLC</a></span></p>
-            <p class="text-orange large info-item"><i class="fa fa-briefcase"></i><span class="margin-left">CTO of <a href="http://gnarwhalstudios.com/">Gnarwhal Studios, INC.</a></span></p>
-            <p class="text-orange large info-item"><i class="fa fa-globe"></i><span class="margin-left">Baltimore, MD</span></p>
-            <p class="text-orange large info-item"><i class="fa fa-envelope"></i><a class="margin-left text-orange" href="mailto:justquick@gmail.com">justquick@gmail.com</a></p>
-            <p class="text-orange large info-item"><i class="fa fa-phone"></i><a href="tel:+14109419553" class="margin-left">410.941.9553</a></p>
-            <p class="text-orange large info-item"><i class="fa fa-linkedin-square"></i><a href="https://www.linkedin.com/in/justquick" class="margin-left">linkedin.com/in/justquick</a></p>
-            <p class="text-orange large info-item"><i class="fa fa-github-square"></i><a href="https://github.com/justquick" class="margin-left">github.com/justquick</a></p>
-          </div>
-        </div><br>
+  <div class="site-wrapper">
+    <aside class="sidebar" aria-label="Profile and contact information">
+      <div class="profile-card">
+        <div class="profile-avatar-wrap">
+          <a href="https://github.com/justquick" aria-label="View Justin Quick's GitHub profile">
+            <img class="profile-avatar"
+                 src="https://avatars2.githubusercontent.com/u/35289?v=4&s=200"
+                 alt="Justin Quick">
+          </a>
+        </div>
+        <p class="profile-title">Software Developer and Technologist</p>
+        <hr class="profile-divider">
+        <ul class="profile-info">
+          <li>
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>
+                Head of Software @ 
+<a href="https://c4ads.org">
+                C4ADS</a>
+            </span>
+          </li>
+          <li>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <span>Washington, DC</span>
+          </li>
+          <li>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:justquick@gmail.com">justquick@gmail.com</a>
+          </li>
+          <li>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <a href="tel:+14109419553">410.941.9553</a>
+          </li>
+          <li>
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            <a href="https://www.linkedin.com/in/justquick">linkedin.com/in/justquick</a>
+          </li>
+          <li>
+            <i class="fa fa-github-square" aria-hidden="true"></i>
+            <a href="https://github.com/justquick">github.com/justquick</a>
+          </li>
+        </ul>
       </div>
+    </aside>
 
-      <div class="twothird">
-        <div class="container white margin-bottom">
-<div class="margin-bottom">
-  <h1 class="padding-16" style="font-weight: bold;">
-    <i class="fa fa-hand-peace-o fa-fw margin-right text-orange" style="font-size: 50px"></i>Hello and Welcome
-  </h1>
-  <h2>I'm Justin Quick — software developer and technologist.</h2>
-  <p class="large">2025 marks my <strong>20th year</strong> in the field.
-    I've spent two decades building and contributing to open-source technologies that power
-    organizations and communities worldwide, with work spanning scalable web applications,
-    developer tooling, and cloud infrastructure.
-  </p>
-</div>
+    <main id="main-content" class="main-content">
+<section class="hero-section">
+  <div class="hero-text">
+    <h1>Hello and Welcome <i class="fa fa-hand-peace-o text-orange" aria-hidden="true"></i></h1>
+    <p class="lead">
+      I'm <strong>Justin Quick</strong> — software developer and technologist.
+    </p>
+    <p>2026 marks my <strong>20th year</strong> in the field. I've spent two decades building and
+      contributing to open-source technologies that power organizations and communities worldwide,
+      with work spanning scalable web applications, developer tooling, and cloud infrastructure.</p>
+  </div>
+  <img class="hero-thumb" src="content/leafheart.jpg" alt="A leaf shaped like a heart — personal symbol">
+</section>
 
-<div class="margin-bottom">
-  <h3><i class="fa fa-code fa-fw margin-right text-orange"></i>Skills</h3>
-  <p class="large">
-    My technical foundation is built on <strong>20 years</strong> of <strong>Python &amp; Django</strong> and
+<div class="content-section">
+  <div class="section-heading">
+    <i class="fa fa-code fa-fw" aria-hidden="true"></i>
+    <h2>Skills</h2>
+  </div>
+  <p>My technical foundation is built on <strong>20 years</strong> of <strong>Python &amp; Django</strong> and
     <strong>Linux systems administration</strong>, complemented by deep expertise in relational databases,
     REST APIs, and JavaScript. Over the years that's broadened into <strong>DevOps</strong> — CI/CD
     pipelines, containerization with Docker and Kubernetes, and cloud infrastructure on AWS — as well as
@@ -72,12 +139,14 @@
   </p>
 </div>
 
-<div class="margin-bottom">
-  <h3><i class="fa fa-github fa-fw margin-right text-orange"></i>Open-Source Projects</h3>
-  <p class="large">
-    I've been writing open-source software since college.
+<div class="content-section">
+  <div class="section-heading">
+    <i class="fa fa-github fa-fw" aria-hidden="true"></i>
+    <h2>Open-Source Projects</h2>
+  </div>
+  <p>I've been writing open-source software since college.
     <a href="projects.html#django-activity-stream">django-activity-stream</a> is my most widely adopted project —
-    a Django implementation of the Activity Streams protocol with thousands of daily PyPI downloads — and I
+    a Django implementation of the Activity Streams protocol with tens of thousands of daily PyPI downloads — and I
     contributed to the spec alongside the W3C Social Web Working Group.
     Earlier work includes <a href="projects.html#google-chartwrapper">GChartWrapper</a>, a Python charting
     library adopted across the web, and <a href="projects.html#python-googlevoice">python-googlevoice</a>,
@@ -86,10 +155,12 @@
   </p>
 </div>
 
-<div class="margin-bottom">
-  <h3><i class="fa fa-briefcase fa-fw margin-right text-orange"></i>Work Experience</h3>
-  <p class="large">
-    I'm currently <strong>Head of Software</strong> at
+<div class="content-section">
+  <div class="section-heading">
+    <i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>
+    <h2>Work Experience</h2>
+  </div>
+  <p>I'm currently <strong>Head of Software</strong> at
 <a href="https://c4ads.org">C4ADS</a>,
     where I lead engineering on a platform for investigating illicit networks and financial crime.
     Before that I spent five years as <strong>Principal IT Technologist</strong> at
@@ -101,16 +172,27 @@
     <a href="professional-experience.html">See the full work history.</a>
   </p>
 </div>
-        </div>
-      </div>
-
-    </div>
+    </main>
   </div>
 
-  <div class="footer orange">
-    <p>Copyright by Justin Quick and JUSTQUICK, LLC 2020-<span id="copyright-year"></span></p>
-    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
-  </div>
+  <footer class="site-footer" role="contentinfo">
+    <p>Copyright &copy; 2020&ndash;<span id="copyright-year"></span> Justin Quick and JUSTQUICK, LLC</p>
+  </footer>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var links = document.getElementById('nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          links.classList.toggle('is-open', !open);
+        });
+      }
+    })();
+  </script>
   <script type="text/javascript" src="content/GithubRepoWidget.min.js"></script>
 </body>
 </html>

@@ -3,12 +3,6 @@ Template: page-education
 Status: published
 Slug: education
 
-<div class="margin-bottom">
-  <h2 class="text-grey padding-16"><i class="fa fa-book fa-fw margin-right xxlarge text-orange"></i>Education</h2>
-  <div class="container">
-    <h3 class="opacity"><b>Goucher College, Towson, MD</b></h3>
-    <h4 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>Class of 2009</h4>
-    <h5>Computer Science Major, Bachelor of Arts</h5>
-    <hr>
-  </div>
-</div>
+<h3>Goucher College, Towson, MD</h3>
+<p class="work-dates"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Class of 2009</p>
+<p>Bachelor of Science, Computer Science</p>

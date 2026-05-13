@@ -1,24 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Justin Quick Developer Site{% endblock %}
+{% block title %}Justin Quick — Developer &amp; Technologist{% endblock %}
 
 {% block page_content %}
-<div class="margin-bottom">
-  <h1 class="padding-16" style="font-weight: bold;">
-    <i class="fa fa-hand-peace-o fa-fw margin-right text-orange" style="font-size: 50px"></i>Hello and Welcome
-  </h1>
-  <h2>I'm Justin Quick — software developer and technologist.</h2>
-  <p class="large">2026 marks my <strong>20th year</strong> in the field.
-    I've spent two decades building and contributing to open-source technologies that power
-    organizations and communities worldwide, with work spanning scalable web applications,
-    developer tooling, and cloud infrastructure.
-  </p>
-</div>
+<section class="hero-section">
+  <div class="hero-text">
+    <h1>Hello and Welcome <i class="fa fa-hand-peace-o text-orange" aria-hidden="true"></i></h1>
+    <p class="lead">
+      I'm <strong>Justin Quick</strong> — software developer and technologist.
+    </p>
+    <p>2026 marks my <strong>20th year</strong> in the field. I've spent two decades building and
+      contributing to open-source technologies that power organizations and communities worldwide,
+      with work spanning scalable web applications, developer tooling, and cloud infrastructure.</p>
+  </div>
+  <img class="hero-thumb" src="content/leafheart.jpg" alt="A leaf shaped like a heart — personal symbol">
+</section>
 
-<div class="margin-bottom">
-  <h3><i class="fa fa-code fa-fw margin-right text-orange"></i>Skills</h3>
-  <p class="large">
-    My technical foundation is built on <strong>20 years</strong> of <strong>Python &amp; Django</strong> and
+<div class="content-section">
+  <div class="section-heading">
+    <i class="fa fa-code fa-fw" aria-hidden="true"></i>
+    <h2>Skills</h2>
+  </div>
+  <p>My technical foundation is built on <strong>20 years</strong> of <strong>Python &amp; Django</strong> and
     <strong>Linux systems administration</strong>, complemented by deep expertise in relational databases,
     REST APIs, and JavaScript. Over the years that's broadened into <strong>DevOps</strong> — CI/CD
     pipelines, containerization with Docker and Kubernetes, and cloud infrastructure on AWS — as well as
@@ -28,12 +31,14 @@
   </p>
 </div>
 
-<div class="margin-bottom">
-  <h3><i class="fa fa-github fa-fw margin-right text-orange"></i>Open-Source Projects</h3>
-  <p class="large">
-    I've been writing open-source software since college.
+<div class="content-section">
+  <div class="section-heading">
+    <i class="fa fa-github fa-fw" aria-hidden="true"></i>
+    <h2>Open-Source Projects</h2>
+  </div>
+  <p>I've been writing open-source software since college.
     <a href="projects.html#django-activity-stream">django-activity-stream</a> is my most widely adopted project —
-    a Django implementation of the Activity Streams protocol with thousands of daily PyPI downloads — and I
+    a Django implementation of the Activity Streams protocol with tens of thousands of daily PyPI downloads — and I
     contributed to the spec alongside the W3C Social Web Working Group.
     Earlier work includes <a href="projects.html#google-chartwrapper">GChartWrapper</a>, a Python charting
     library adopted across the web, and <a href="projects.html#python-googlevoice">python-googlevoice</a>,
@@ -42,10 +47,12 @@
   </p>
 </div>
 
-<div class="margin-bottom">
-  <h3><i class="fa fa-briefcase fa-fw margin-right text-orange"></i>Work Experience</h3>
-  <p class="large">
-    I'm currently <strong>{{ SITEDATA.works[0].position }}</strong> at
+<div class="content-section">
+  <div class="section-heading">
+    <i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>
+    <h2>Work Experience</h2>
+  </div>
+  <p>I'm currently <strong>{{ SITEDATA.works[0].position }}</strong> at
     {% if SITEDATA.works[0].link %}<a href="{{ SITEDATA.works[0].link }}">{{ SITEDATA.works[0].company }}</a>{% else %}{{ SITEDATA.works[0].company }}{% endif %},
     where I lead engineering on a platform for investigating illicit networks and financial crime.
     Before that I spent five years as <strong>Principal IT Technologist</strong> at

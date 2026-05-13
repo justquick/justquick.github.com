@@ -7,7 +7,7 @@ from pelican import signals
 
 INFO = {
     "email": "justquick@gmail.com",
-    "location": "Baltimore, MD",
+    "location": "Washington, DC",
     "phone": "410.941.9553",
     "title": "Software Developer and Technologist",
     "mission": (

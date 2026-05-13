@@ -1,63 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>{% block title %}Justin Quick Developer Site{% endblock %}</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Justin Quick — Developer &amp; Technologist{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Justin Quick — Software Developer and Technologist with 20 years of Python, Django, Linux systems administration, DevOps, AWS, and JavaScript expertise. Open-source author and contributor.{% endblock %}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Justin Quick">
+  <meta property="og:title" content="{% block og_title %}Justin Quick — Developer &amp; Technologist{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Justin Quick — Software Developer and Technologist with 20 years of Python, Django, Linux, DevOps, AWS, and JavaScript expertise. Open-source author and contributor.{% endblock %}">
+  <meta property="og:url" content="{{ SITEURL }}/{% block og_url %}index.html{% endblock %}">
+  <meta property="og:image" content="https://avatars2.githubusercontent.com/u/35289?v=4&s=200">
+
+  <!-- Schema.org Person structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Justin Quick",
+    "jobTitle": "{{ SITEDATA.info.title }}",
+    "email": "{{ SITEDATA.info.email }}",
+    "url": "{{ SITEURL }}/index.html",
+    "image": "https://avatars2.githubusercontent.com/u/35289?v=4&s=200",
+    "sameAs": [
+      "https://github.com/justquick",
+      "https://www.linkedin.com/in/justquick"
+    ],
+    "knowsAbout": [{% for skill in SITEDATA.info.skill_list %}"{{ skill.name }}"{% if not loop.last %}, {% endif %}{% endfor %}]
+  }
+  </script>
+
   <link rel="apple-touch-icon" sizes="180x180" href="content/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="content/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="content/favicon-16x16.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="content/purifyd.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="content/purifyd.css">
 </head>
-<body class="dark-grey">
-  <div class="tab">
-    <a href="index.html"><img src="content/JQLogoOrangeRectangleTightWide.png" style="position: relative;float: left; height: 60px;" /></a>
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="skills.html">Skills</a>
-    <a href="professional-experience.html">Work Experience</a>
-    <a href="education.html">Education</a>
-<a href="support.html">Support</a>
-  </div>
+<body>
 
-  <div class="content margin-top" style="max-width:1400px; margin-bottom: 50px;">
-    <div class="row-padding">
-
-      <div class="third">
-        <div class="white text-grey card-4">
-          <div class="container">
-            <div class="github-card user-card" style="background: none; margin-top: 110px">
-              <a class="avatar" href="https://github.com/justquick" target="_top"><img
-                  src="https://avatars2.githubusercontent.com/u/35289?v=4&amp;s=200" alt="Justin Quick"></a>
-              <p class="xlarge" style="margin: 0;">{{ SITEDATA.info.title }}</p>
-            </div>
-            <hr>
-            <p class="text-orange large info-item"><i class="fa fa-briefcase"></i><span class="margin-left">CEO of <a href="http://justquick.io">JUSTQUICK, LLC</a></span></p>
-            <p class="text-orange large info-item"><i class="fa fa-briefcase"></i><span class="margin-left">CTO of <a href="http://gnarwhalstudios.com/">Gnarwhal Studios, INC.</a></span></p>
-            <p class="text-orange large info-item"><i class="fa fa-globe"></i><span class="margin-left">Baltimore, MD</span></p>
-            <p class="text-orange large info-item"><i class="fa fa-envelope"></i><a class="margin-left text-orange" href="mailto:{{ SITEDATA.info.email }}">{{ SITEDATA.info.email }}</a></p>
-            <p class="text-orange large info-item"><i class="fa fa-phone"></i><a href="tel:+14109419553" class="margin-left">410.941.9553</a></p>
-            <p class="text-orange large info-item"><i class="fa fa-linkedin-square"></i><a href="https://www.linkedin.com/in/justquick" class="margin-left">linkedin.com/in/justquick</a></p>
-            <p class="text-orange large info-item"><i class="fa fa-github-square"></i><a href="https://github.com/justquick" class="margin-left">github.com/justquick</a></p>
-          </div>
-        </div><br>
-      </div>
-
-      <div class="twothird">
-        <div class="container white margin-bottom">
-          {% block page_content %}{% endblock %}
-        </div>
-      </div>
-
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html" aria-label="Justin Quick — Home">
+        <span class="logo-text">JQ/I|O</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="professional-experience.html">Work Experience</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </header>
+
+  <div class="site-wrapper">
+    <aside class="sidebar" aria-label="Profile and contact information">
+      <div class="profile-card">
+        <div class="profile-avatar-wrap">
+          <a href="https://github.com/justquick" aria-label="View Justin Quick's GitHub profile">
+            <img class="profile-avatar"
+                 src="https://avatars2.githubusercontent.com/u/35289?v=4&s=200"
+                 alt="Justin Quick">
+          </a>
+        </div>
+        <p class="profile-title">{{ SITEDATA.info.title }}</p>
+        <hr class="profile-divider">
+        <ul class="profile-info">
+          <li>
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>
+                {{ SITEDATA.works[0].position }} @ 
+              {% if SITEDATA.works[0].link %}<a href="{{ SITEDATA.works[0].link }}">
+                {{ SITEDATA.works[0].company }}</a>
+              {% endif %}
+            </span>
+          </li>
+          <li>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <span>{{ SITEDATA.info.location }}</span>
+          </li>
+          <li>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:{{ SITEDATA.info.email }}">{{ SITEDATA.info.email }}</a>
+          </li>
+          <li>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <a href="tel:+14109419553">{{ SITEDATA.info.phone }}</a>
+          </li>
+          <li>
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            <a href="https://www.linkedin.com/in/justquick">linkedin.com/in/justquick</a>
+          </li>
+          <li>
+            <i class="fa fa-github-square" aria-hidden="true"></i>
+            <a href="https://github.com/justquick">github.com/justquick</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main id="main-content" class="main-content">
+      {% block page_content %}{% endblock %}
+    </main>
   </div>
 
-  <div class="footer orange">
-    <p>Copyright by Justin Quick and JUSTQUICK, LLC 2020-<span id="copyright-year"></span></p>
-    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
-  </div>
+  <footer class="site-footer" role="contentinfo">
+    <p>Copyright &copy; 2020&ndash;<span id="copyright-year"></span> Justin Quick and JUSTQUICK, LLC</p>
+  </footer>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var links = document.getElementById('nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          links.classList.toggle('is-open', !open);
+        });
+      }
+    })();
+  </script>
   <script type="text/javascript" src="content/GithubRepoWidget.min.js"></script>
 </body>
 </html>
