@@ -51,13 +51,13 @@
               SKILLS
             </h2>
             <div class="smallText">
-              {% for skill,years in SITEDATA.info.skills.items() %}
+              {% for skill in SITEDATA.info.skill_list %}
               <div class="skill">
                 <div>
-                  <span>{{ skill }}</span>
+                  <span>{{ skill.name }}</span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">{{ years }}</span>
+                  <span class="alignright">{{ skill.years }}</span>
                   <span class="alignleft">years</span>
                 </div>
               </div>

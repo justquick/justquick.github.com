@@ -3,25 +3,23 @@
 <head>
   <title>{% block title %}Justin Quick Developer Site{% endblock %}</title>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="180x180" href="/content/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/content/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/content/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="content/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="content/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="content/favicon-16x16.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/content/purifyd.css">
+  <link rel="stylesheet" href="content/purifyd.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="dark-grey">
-  {% set current = page.slug if page is defined else 'home' %}
   <div class="tab">
-    <a href="/"><img src="/content/JQLogoOrangeRectangleTightWide.png" style="position: relative;float: left; height: 60px;" /></a>
-    <a href="/" class="tablinks{% if current == 'home' %} active{% endif %}">Home</a>
-    <a href="/projects.html" class="tablinks{% if current == 'projects' %} active{% endif %}">Projects</a>
-    <a href="/skills.html" class="tablinks{% if current == 'skills' %} active{% endif %}">Skills</a>
-    <a href="/pe.html" class="tablinks{% if current == 'pe' %} active{% endif %}">Work Experience</a>
-    <a href="/education.html" class="tablinks{% if current == 'education' %} active{% endif %}">Education</a>
-    <a href="/contact.html" class="tablinks{% if current == 'contact' %} active{% endif %}">Contact</a>
-    <a href="/support.html" class="tablinks{% if current == 'support' %} active{% endif %}">Support</a>
+    <a href="index.html"><img src="content/JQLogoOrangeRectangleTightWide.png" style="position: relative;float: left; height: 60px;" /></a>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="professional-experience.html">Work Experience</a>
+    <a href="education.html">Education</a>
+<a href="support.html">Support</a>
   </div>
 
   <div class="content margin-top" style="max-width:1400px; margin-bottom: 50px;">
@@ -59,6 +57,6 @@
   <div class="footer orange">
     <p>Copyright by Justin Quick and JUSTQUICK, LLC 2020-2022</p>
   </div>
-  <script type="text/javascript" src="/content/GithubRepoWidget.min.js"></script>
+  <script type="text/javascript" src="content/GithubRepoWidget.min.js"></script>
 </body>
 </html>

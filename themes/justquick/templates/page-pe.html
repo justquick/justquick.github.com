@@ -6,6 +6,7 @@
 <div class="margin-bottom">
   <h2 class="text-grey padding-16"><i class="fa fa-suitcase fa-fw margin-right xxlarge text-orange"></i>Work Experience</h2>
   <div class="container">
+    {{ page.content }}
     {% for work in SITEDATA.works %}
     <h3 class="opacity"><b>{{ work.company }}</b></h3>
     <h3 class="opacity">{{ work.position }}</h3>
