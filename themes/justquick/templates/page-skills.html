@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Skills - Justin Quick{% endblock %}
+
+{% block page_content %}
+<div class="margin-bottom">
+  <h2 class="text-grey padding-16"><i class="fa fa-check-square-o fa-fw margin-right xxlarge text-orange"></i>Skills</h2>
+  <h3>I have accumulated many talents throughout my years of experience.
+    My focus is on large scale web applications written in Python and/or Django.
+    I started out writing Django apps to learn Python and quickly grew to become a full stack developer.
+    As I learned more, I worked to focus on the service backend of any application I'm working on.
+    My experience as a Linux SysAdmin has served me well and I have grown into a DevOps Engineer.</h3>
+  {% for skill, years in SITEDATA.info.skills.items() %}
+  <div class="container">
+    <h3 class="opacity"><b>{{ skill }}</b> <span class="text-orange" style="font-size: 0.8em">{{ years }} yrs</span></h3>
+    <div class="light-grey round-xlarge">
+      <div class="container center round-xlarge orange" style="width:{{ [years * 5, 100] | min }}%">{{ years * 5 }}%</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

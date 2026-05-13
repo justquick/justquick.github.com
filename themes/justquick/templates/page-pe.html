@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Work Experience - Justin Quick{% endblock %}
+
+{% block page_content %}
+<div class="margin-bottom">
+  <h2 class="text-grey padding-16"><i class="fa fa-suitcase fa-fw margin-right xxlarge text-orange"></i>Work Experience</h2>
+  <div class="container">
+    {% for work in SITEDATA.works %}
+    <h3 class="opacity"><b>{{ work.company }}</b></h3>
+    <h3 class="opacity">{{ work.position }}</h3>
+    <h4 class="text-orange"><i class="fa fa-calendar fa-fw margin-right"></i>{{ work.dates }}</h4>
+    <ul class="large">
+      {% for duty in work.duties %}
+      <li>{{ duty|safe }}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
