@@ -21,37 +21,12 @@ jobs:
 
     - name: Build site
       run: |
-        uv run pelican markdown-content -s publishconf.py
+        uv run pelican 
 
-    - name: Copy static assets and legacy content
-      run: |
-        # Copy content directory (CSS, JS, images)
-        cp -r content output/
-
-        # Copy legacy project directories
-        cp -r django-activity-stream output/
-        cp -r google-chartwrapper-apidoc output/
-        cp -r google-chartwrapper-demos output/
-        cp -r jeebusisgod output/
-        cp -r gsp.studio output/
-        cp -r digit output/
-        cp -r directories output/
-        cp -r pdf12step output/
-        cp -r django-native-tags output/
-
-        # Copy root level files
-        cp favicon.ico output/ || true
-        cp avatar.jpg output/ || true
-        cp github-widget.js output/ || true
-        cp donate.html output/ || true
-        cp CNAME output/ || true
-        cp .nojekyll output/ || true
-        cp resume.css output/ || true
-        cp *.pdf output/ || true
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./output
+        publish_dir: .
         keep_files: true
