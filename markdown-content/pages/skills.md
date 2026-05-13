@@ -3,8 +3,4 @@ Template: page-skills
 Status: published
 Slug: skills
 
-I have accumulated many talents throughout my years of experience.
-My focus is on large scale web applications written in Python and/or Django.
-I started out writing Django apps to learn Python and quickly grew to become a full stack developer.
-As I learned more, I worked to focus on the service backend of any application I'm working on.
-My experience as a Linux SysAdmin has served me well and I have grown into a DevOps Engineer.
+Over the course of my career I have developed a broad technical skill set with a focus on large-scale web applications built in Python and Django. What began as application development evolved into full-stack engineering, and eventually into a DevOps and systems practice grounded in years of Linux administration experience.

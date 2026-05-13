@@ -11,25 +11,24 @@ INFO = {
     "phone": "410.941.9553",
     "title": "Software Developer and Technologist",
     "mission": (
-        "I am making the world better by contributing to open source technologies"
-        " for organizations and communities specializing in web applications. I have contributed"
-        " to projects that span the world and help people have a better relationship with"
-        " technology on the web."
+        "I build and contribute to open-source technologies that power organizations"
+        " and communities worldwide. My work spans scalable web applications, developer"
+        " tooling, and cloud infrastructure—with a focus on meaningful impact and engineering excellence."
     ),
     "social": {
         "github-square": "justquick",
         "linkedin-square": "justquick",
     },
     "skills": {
-        "Linux Sys Admin": 19,
-        "Python & Django": 19,
-        "SQL": 18,
-        "APIs/Integrations": 16,
-        "JavaScript": 16,
-        "Agile": 15,
-        "DevOps": 14,
-        "Cloud/AWS": 10,
-        "BI Analytics/Data Science": 6,
+        "Linux Sys Admin": 20,
+        "Python & Django": 20,
+        "SQL": 19,
+        "APIs/Integrations": 17,
+        "JavaScript": 17,
+        "Agile": 16,
+        "DevOps": 15,
+        "Cloud/AWS": 11,
+        "BI Analytics/Data Science": 7,
     },
 }
 
@@ -40,7 +39,7 @@ WORKS = [
         "position": "Head of Software",
         "dates": "Aug 2025 - Present",
         "duties": [
-            "Department head for dev team of SaaS platform for investigating ilicit networks"
+            "Lead the engineering team building a SaaS platform for investigating illicit networks and financial crime.",
         ],
     },
     {
@@ -49,11 +48,11 @@ WORKS = [
         "position": "Webmaster",
         "dates": "Sept 2024 - Present",
         "duties": [
-            "Website redesign from single page SquareSite to multi page WordPress with custom developed theme for ottlaw.com",
-            "Integrated multiple site features including phone calls, XML sitemaps, contact/feedback email forms, social media, Google Analytics, and Google business reviews",
-            "Fully designed SEO with performance and caching to boost PageSpeed rankings taking site from C- to A",
-            "Setup Google and Facebook advertising and campaign management",
-            "Trained staff in use of WordPress and integrated services",
+            "Redesigned the firm's website from a single-page Squarespace site to a multi-page WordPress site with a custom-built theme.",
+            "Integrated click-to-call, XML sitemaps, contact forms, social media feeds, Google Analytics, and Google Business reviews.",
+            "Designed and implemented a comprehensive SEO, performance, and caching strategy, improving PageSpeed scores from a C to an A.",
+            "Set up and managed Google and Facebook advertising campaigns.",
+            "Trained staff on WordPress and all integrated third-party services.",
         ],
     },
     {
@@ -62,12 +61,12 @@ WORKS = [
         "position": "Principal IT Technologist",
         "dates": "Aug 2019 - Apr 2024",
         "duties": [
-            "Developed CI/CD pipelines using Gitlab, Docker and Kubernetes to launch vendor and home grown apps into AWS and on prem clouds.",
-            "Created system performance reporting platform using Python, Postgres, Django ReST Framework and Tableau. Gathered KPIs from Gitlab, Jira, Confluence, Slack, Box.com, Cisco UC, Jahia, Site 24x7, Uptime and others. Subsequently migrated high priority endpoints to FastAPI service with Neo4j and ClickHouse for DB backend.",
-            "Technical lead for Science Mission Office Library archive website for Hubble using Lucidea's ArchivEra LMS. Worked with stakeholders to build requirements, assess technical solutions and implement the best solution for the job.",
-            "Created scalable cloud implementation for Houdini 3D rendering clients using VMWare, Kubernetes, and Terraform",
-            "Founding member of the cross divisional Private Cloud Engineering Team to develop best practices for launching vendor and in-house developed apps in multi-cloud environments",
-            "Implemented rollout of FedRamp/ITAR certification for Box subscripting using AWS KMS",
+            "Developed CI/CD pipelines using GitLab, Docker, and Kubernetes to deploy vendor and in-house applications to AWS and on-premises cloud environments.",
+            "Built a system performance reporting platform using Python, PostgreSQL, Django REST Framework, and Tableau, aggregating KPIs from GitLab, Jira, Confluence, Slack, Box, Cisco UC, and others; later migrated high-priority endpoints to a FastAPI service backed by Neo4j and ClickHouse.",
+            "Served as technical lead for the Science Mission Office's Hubble library archive, built on Lucidea's ArchivEra LMS; gathered stakeholder requirements, evaluated solutions, and drove implementation.",
+            "Designed a scalable cloud rendering environment for Houdini 3D clients using VMware, Kubernetes, and Terraform.",
+            "Founding member of the cross-divisional Private Cloud Engineering Team, establishing best practices for deploying applications across multi-cloud environments.",
+            "Led the FedRAMP/ITAR-compliant rollout of Box using AWS KMS for encryption key management.",
         ],
     },
     {
@@ -76,9 +75,9 @@ WORKS = [
         "position": "CTO and Application Developer",
         "dates": "2005 - 2021",
         "duties": [
-            "Oversee the technical decisions for the production websites of Gnarhwhal Studios and the Humans vs Zombies game.",
-            "Lead project architect for HvZ game tracking web application written in Python/Django",
-            'We produce games such as <a href="http://humansvszombies.org">Humans Vs Zombies</a> and <a href="http://slap45.com">Slap 45</a>. Company site is <a href="http://gnarwhalstudios.com/">http://gnarwhalstudios.com/</a>',
+            "Oversaw all technical decisions for Gnarwhal Studios' production websites and the Humans vs. Zombies game platform.",
+            "Led architecture and development of the HvZ game-tracking web application in Python and Django.",
+            'Products included <a href="http://humansvszombies.org">Humans vs. Zombies</a> and <a href="http://slap45.com">Slap 45</a>.',
         ],
     },
     {
@@ -86,10 +85,10 @@ WORKS = [
         "position": "Senior Software Engineer",
         "dates": "Oct 2018 - May 2019",
         "duties": [
-            "Client is a fortune 50 financial company.",
-            "Built web application on top of Puppet to orchestrate software deployments",
-            "Worked using SOA for micro-service controllers to deploy updates to ~80K nodes.",
-            "Designed search service combining Python, ElasticSearch, Puppet facts and application data.",
+            "Embedded with a Fortune 50 financial services firm.",
+            "Built a web application on top of Puppet to orchestrate software deployments across the enterprise.",
+            "Designed SOA micro-service controllers to push updates across approximately 80,000 nodes.",
+            "Built a search service combining Python, Elasticsearch, Puppet facts, and application metadata.",
         ],
     },
     {
@@ -97,9 +96,9 @@ WORKS = [
         "position": "Senior Application Developer",
         "dates": "October 2017 - April 2018",
         "duties": [
-            "Integrated Box.com API to use as the file store for our uploaded documents",
-            "Using Redis, Postgres and django-channels, built real-time communications app to send model updates to client using websockets",
-            "Tracked and fixed Ruby/Sinatra bugs while learning Ruby on the job",
+            "Integrated the Box.com API as the document storage backend.",
+            "Built a real-time communications layer using Redis, PostgreSQL, and django-channels to push model updates to clients via WebSockets.",
+            "Diagnosed and resolved Ruby/Sinatra defects while onboarding to the language.",
         ],
     },
     {
@@ -107,9 +106,9 @@ WORKS = [
         "position": "Senior Engineer",
         "dates": "September 2016 - November 2016",
         "duties": [
-            "Integrated proprietary health insurance databases into MySQL to track insurance coverage including copays, deductibles and out of pocket limits",
-            "Normalized tracking of lab results to account for differing test and reference levels using Postgres and Django ReST Framework to deliver results to mobile app",
-            "Implemented Stripe payments for monthly subscriptions",
+            "Integrated proprietary health insurance databases into MySQL to track coverage details including copays, deductibles, and out-of-pocket limits.",
+            "Normalized lab result tracking across varying test and reference ranges using PostgreSQL and Django REST Framework to deliver data to a mobile application.",
+            "Integrated Stripe to handle recurring monthly subscription billing.",
         ],
     },
     {
@@ -118,10 +117,10 @@ WORKS = [
         "position": "Senior Application Developer",
         "dates": "April 2013 - July 2016",
         "duties": [
-            "Tech lead for digital magazine app. Delivered API using Postgres and Django to be used with consultant's mobile application.",
-            "Implemented CI/CD with Jenkins and Linux containers for all Python powered websites.",
-            "Worked on services team for internal API workflow management and SOA application projects.",
-            'Tech lead on Django app <a href="https://yourshot.nationalgeographic.com/">Your Shot photo sharing community</a>',
+            "Led backend development of the digital magazine platform, delivering a PostgreSQL/Django API consumed by a third-party mobile application.",
+            "Implemented CI/CD pipelines using Jenkins and Linux containers across all Python-powered web properties.",
+            "Contributed to the services team on internal API workflow management and SOA application initiatives.",
+            'Served as technical lead for <a href="https://yourshot.nationalgeographic.com/">Your Shot</a>, National Geographic\'s global photo-sharing community.',
         ],
     },
     {
@@ -129,9 +128,9 @@ WORKS = [
         "position": "Senior Application Developer",
         "dates": "September 2012 - February 2013",
         "duties": [
-            "Brought in as a Postgres and Django consultant to an ongoing project to gameify social amplification of a client's content.",
-            "Implemented best practices in CI/CD, testing and documentation.",
-            "Integrated additional social platforms (eg YouTube) gathered in Python into the database",
+            "Engaged as a PostgreSQL and Django consultant to gamify social content amplification for brand clients.",
+            "Introduced CI/CD pipelines, testing standards, and documentation practices to the engineering team.",
+            "Extended platform integrations to additional social networks, including YouTube, via Python.",
         ],
     },
     {
@@ -139,9 +138,9 @@ WORKS = [
         "position": "Senior Application Developer",
         "dates": "December 2012",
         "duties": [
-            "Integrated Kentico CMS with Facebook pages for livestrong.org",
-            'Improved site implementation and added activity streams for NASA\'s fragileoasis.org powered by my personal project <a href="https://django-activity-stream.readthedocs.io/en/latest/">django-activity-stream</a>',
-            "Created judging interface in the Django admin for National Geographic photography contests",
+            "Integrated Kentico CMS with Facebook Pages for livestrong.org.",
+            'Enhanced fragileoasis.org (NASA) with activity streams powered by <a href="https://django-activity-stream.readthedocs.io/en/latest/">django-activity-stream</a>, my open-source project.',
+            "Built a contest judging interface within Django Admin for National Geographic photography competitions.",
         ],
     },
     {
@@ -150,8 +149,8 @@ WORKS = [
         "position": "Application Developer",
         "dates": "December 2010 - December 2012",
         "duties": [
-            "Worked on a shared Postgres and Django based CMS for newsroom content production.",
-            'Developed a photo contest submission platform used for <a href="https://www.nationalgeographic.com/travel/contests/travel-photo-contest-2019/">NatGeo Travel and Kids.</a>',
+            "Developed features on a shared PostgreSQL and Django CMS powering National Geographic's newsroom content production.",
+            'Built a photo contest submission platform for <a href="https://www.nationalgeographic.com/travel/contests/travel-photo-contest-2019/">NatGeo Travel and Kids</a>.',
         ],
     },
     {
@@ -159,9 +158,9 @@ WORKS = [
         "position": "Django Developer",
         "dates": "June 2009 - June 2010",
         "duties": [
-            "Expanded Postgres and Django site to support internationalization and allowed staff to edit multilingual content",
-            "Migrated application stack to Media Temple hosting",
-            "Optimized page load speed and media asset delivery",
+            "Extended the PostgreSQL and Django application to support internationalization, enabling staff to author and manage multilingual content.",
+            "Migrated the full application stack to Media Temple hosting.",
+            "Optimized page load performance and media asset delivery.",
         ],
     },
     {
@@ -170,10 +169,10 @@ WORKS = [
         "position": "Web Developer",
         "dates": "Dec 2008 - June 2010",
         "duties": [
-            "Ellington CMS (now Django) administrator.",
-            "Postgres DBA",
-            "Application Development for Python/Django with emphasis on scalability.",
-            'Published several projects and most are opensourced and available on <a href="https://github.com/callowayproject/Calloway">The Calloway Project</a>',
+            "Administered the Ellington CMS (the precursor to open-source Django).",
+            "Served as PostgreSQL DBA.",
+            "Developed Python/Django applications with a focus on scalability and performance.",
+            'Open-sourced several internal projects, most available through <a href="https://github.com/callowayproject/Calloway">The Calloway Project</a>.',
         ],
     },
     {
@@ -181,9 +180,9 @@ WORKS = [
         "position": "Web Application Developer",
         "dates": "Jan 2008 - Mar 2008",
         "duties": [
-            "Worked on Django applications for work flow management system for work orders",
-            "Created helpful AJAX utilities including CRUD interface",
-            "Debugged and troubleshooted software for users after deployment",
+            "Developed Django applications for a work-order workflow management system.",
+            "Built AJAX utilities including a full CRUD interface.",
+            "Provided post-deployment debugging and end-user support.",
         ],
     },
     {
@@ -191,8 +190,8 @@ WORKS = [
         "position": "Developer & MySQL Administrator",
         "dates": "2007",
         "duties": [
-            "Developed website for physician provider information and initial audio telemedicine",
-            "MySQL DBA for MySQL VPS server responsible for user administration and scaling",
+            "Built a physician directory website and implemented initial audio telemedicine capabilities.",
+            "Managed MySQL on a VPS, handling user administration and capacity planning.",
         ],
     },
     {
@@ -200,9 +199,9 @@ WORKS = [
         "position": "Developer & Fedora Administrator",
         "dates": "2006",
         "duties": [
-            "Configured social networking site GroupUS with emphasis on real time audio communication",
-            "PBX software deployment for broadcasting local DC Fire/Police",
-            "Created community site for networking using Django",
+            "Configured the GroupUS social networking platform with a focus on real-time audio communication.",
+            "Deployed PBX software to broadcast local Washington, D.C. fire and police communications.",
+            "Built a Django-powered community networking site.",
         ],
     },
     {
@@ -211,9 +210,9 @@ WORKS = [
         "position": "Web Developer / Ubuntu Administrator",
         "dates": "2006",
         "duties": [
-            "Created the HvZSource project providing a website to manage hosting games across 6 continents",
-            "Wrote a custom Django application to manage game events and players with tags and kills",
-            "Mass email campaign management with SendGrid",
+            "Created HvZSource, a web platform managing game hosting across six continents.",
+            "Built a custom Django application to track game events, players, tags, and kills.",
+            "Managed mass email campaigns via SendGrid.",
         ],
     },
 ]
