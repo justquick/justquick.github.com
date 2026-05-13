@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — Justin Quick</title>
+  <meta name="description" content="Justin Quick — Software Developer and Technologist with 20 years of Python, Django, Linux systems administration, DevOps, AWS, and JavaScript expertise. Open-source author and contributor.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Justin Quick">
+  <meta property="og:title" content="Justin Quick — Developer &amp; Technologist">
+  <meta property="og:description" content="Justin Quick — Software Developer and Technologist with 20 years of Python, Django, Linux, DevOps, AWS, and JavaScript expertise. Open-source author and contributor.">
+  <meta property="og:url" content="/index.html">
+  <meta property="og:image" content="https://avatars2.githubusercontent.com/u/35289?v=4&s=200">
+
+  <!-- Schema.org Person structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Justin Quick",
+    "jobTitle": "Software Developer and Technologist",
+    "email": "justquick@gmail.com",
+    "url": "/index.html",
+    "image": "https://avatars2.githubusercontent.com/u/35289?v=4&s=200",
+    "sameAs": [
+      "https://github.com/justquick",
+      "https://www.linkedin.com/in/justquick"
+    ],
+    "knowsAbout": ["Linux Sys Admin", "Python & Django", "SQL", "APIs/Integrations", "JavaScript", "Agile", "DevOps", "Cloud/AWS", "BI Analytics/Data Science"]
+  }
+  </script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="content/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="content/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="content/favicon-16x16.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="content/purifyd.css">
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html" aria-label="Justin Quick — Home">
+        <span class="logo-text">JQ/I|O</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="professional-experience.html">Work Experience</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="site-wrapper">
+    <aside class="sidebar" aria-label="Profile and contact information">
+      <div class="profile-card">
+        <div class="profile-avatar-wrap">
+          <a href="https://github.com/justquick" aria-label="View Justin Quick's GitHub profile">
+            <img class="profile-avatar"
+                 src="https://avatars2.githubusercontent.com/u/35289?v=4&s=200"
+                 alt="Justin Quick">
+          </a>
+        </div>
+        <p class="profile-title">Software Developer and Technologist</p>
+        <hr class="profile-divider">
+        <ul class="profile-info">
+          <li>
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <span>
+                Head of Software @ 
+<a href="https://c4ads.org">
+                C4ADS</a>
+            </span>
+          </li>
+          <li>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <span>Washington, DC</span>
+          </li>
+          <li>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:justquick@gmail.com">justquick@gmail.com</a>
+          </li>
+          <li>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <a href="tel:+14109419553">410.941.9553</a>
+          </li>
+          <li>
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            <a href="https://www.linkedin.com/in/justquick">linkedin.com/in/justquick</a>
+          </li>
+          <li>
+            <i class="fa fa-github-square" aria-hidden="true"></i>
+            <a href="https://github.com/justquick">github.com/justquick</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main id="main-content" class="main-content">
+<div class="section-heading">
+  <i class="fa fa-heart fa-fw" aria-hidden="true"></i>
+  <h2>Support My Work</h2>
+</div>
+<p>Please support my ongoing work in open source. Your contributions help keep my projects alive,
+  direct my time to the efforts I love, and keep the lights on. Any amount is appreciated.
+  Payments are processed through GitHub Sponsors.</p>
+<iframe class="sponsor-iframe"
+  src="https://github.com/sponsors/justquick/card"
+  title="Sponsor justquick on GitHub"></iframe>
+    </main>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>Copyright &copy; 2020&ndash;<span id="copyright-year"></span> Justin Quick and JUSTQUICK, LLC</p>
+  </footer>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var links = document.getElementById('nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          links.classList.toggle('is-open', !open);
+        });
+      }
+    })();
+  </script>
+  <script type="text/javascript" src="content/GithubRepoWidget.min.js"></script>
+</body>
+</html>
