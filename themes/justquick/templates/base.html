@@ -55,7 +55,8 @@
   </div>
 
   <div class="footer orange">
-    <p>Copyright by Justin Quick and JUSTQUICK, LLC 2020-2022</p>
+    <p>Copyright by Justin Quick and JUSTQUICK, LLC 2020-<span id="copyright-year"></span></p>
+    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
   </div>
   <script type="text/javascript" src="content/GithubRepoWidget.min.js"></script>
 </body>
