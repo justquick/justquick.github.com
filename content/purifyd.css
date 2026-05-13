@@ -17,7 +17,9 @@ html {
 body {
   zoom: 90%;
   margin: 0;
-  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: url(leafheart.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -30,12 +32,10 @@ footer, header, main {
 }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   color: white;
   text-align: center;
+  margin-top: auto;
 }
 
 [hidden] {
